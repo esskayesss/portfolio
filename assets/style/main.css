@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'GohuFont Nerd Font';
+    src: url('/fonts/GohuFontNerdFontComplete-Medium.eot');
+    src: url('/fonts/GohuFontNerdFontComplete-Medium.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/GohuFontNerdFontComplete-Medium.woff2') format('woff2'),
+        url('/fonts/GohuFontNerdFontComplete-Medium.woff') format('woff'),
+        url('/fonts/GohuFontNerdFontComplete-Medium.ttf') format('truetype'),
+        url('/fonts/GohuFontNerdFontComplete-Medium.svg#GohuFontNerdFontComplete-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    @apply text-zinc-300 bg-zinc-950;
+}
