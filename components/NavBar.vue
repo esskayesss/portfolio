@@ -1,30 +1,38 @@
 <script lang="ts" setup>
 const navLinks = ref<{
     label: string,
-    link: string,
-    extraClasses: string
+    link?: string,
+    id: string,
 }[]>([
     {
-        label: "blog.",
-        link: "https://blog.esskayesss.dev/",
-        extraClasses: ""
-    },
-    {
         label: "experience.",
-        link: "/experience",
-        extraClasses: ""
-    },
-    {
-        label: "research.",
-        link: "/research",
-        extraClasses: ""
+        id: '#work'
     },
     {
         label: "projects.",
-        link: "/projects",
-        extraClasses: ""
+        id: '#projects'
     },
+    {
+        label: "research.",
+        id: '#research'
+    },
+    {
+        label: "certifications.",
+        id: '#certs'
+    }
 ])
+
+const scrollToView = (event: Event) => {
+    const target = event.target as HTMLAnchorElement;
+    const targetElement = document.querySelector(target.hash);
+    console.log(targetElement);
+}
+
+const scrollIDToView = (id: string) => {
+    const targetElement = document.querySelector(id);
+    console.log(targetElement);
+    targetElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 </script>
 
 <template>
@@ -32,10 +40,13 @@ const navLinks = ref<{
         <img src="~/assets/images/avatar-round.png" class="w-[75px] h-[75px] rounded-full border-2 header-img" />
         <nav>
             <ul class="flex space-x-10 text-xl font-semibold">
+                <li>
+                    <a href="https://blog.esskayesss.dev" class="py-4 navlink duration-700" target="_blank">blog.</a>
+                </li>
                 <li v-for="link in navLinks" :key="link.label">
-                    <NuxtLink :to="link.link" :class="link.extraClasses" class="py-4 duration-700 navlink">
+                    <a class="hover:cursor-pointer py-4 duration-700 navlink" @click="scrollIDToView(link.id)">
                         {{ link.label }}
-                    </NuxtLink>
+                    </a>
                 </li>
                 <li>
                     <a href="/resume.pdf" class="py-4 getcv hover:text-accent" target="_blank">resumé.</a>

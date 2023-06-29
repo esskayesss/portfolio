@@ -11,11 +11,29 @@
       </div>
     </div>
     <MeshBakground class="absolute top-0 left-0 fixed z-[-1]" />
-    <NavBar class="absolute hidden lg:flex left-0 top-0 px-20 z-10" />
-    <div class="hidden lg:grid grid-cols-11 grid-rows-1 h-[90vh] py-[10vh] mt-[10vh] px-20 w-screen">
+    <NavBar class="absolute hidden lg:flex left-0 top-0 px-14 z-10" />
+    <!-- <div class="hidden lg:grid grid-cols-11 grid-rows-1 h-[90vh] py-[10vh] mt-[10vh] px-20 w-screen">
       <LeftPane class="col-span-4 h-full w-fit overflow-hidden" />
-      <PortfolioData class="overflow-y-scroll col-span-7 mx-auto w-full" />
-      <div></div>
+      <RightPane class="overflow-y-scroll col-span-7 mx-auto w-full" />
+    </div> -->
+    <div class="flex h-[90vh] py-[10vh] mt-[10vh] px-14 w-screen">
+      <LeftPane class="max-w-[40%] h-full w-fit overflow-hidden leftpane" />
+      <RightPane class="max-w-full overflow-x-hidden overflow-y-scroll mx-auto w-full px-6 rightpane" />
     </div>
   </div>
 </template>
+
+<style>
+.rightpane::-webkit-scrollbar {
+  width: 10px;
+}
+
+.rightpane::-webkit-scrollbar-track {
+  @apply drop-shadow-2xl backdrop-grayscale;
+  background: transparent;
+}
+
+.rightpane::-webkit-scrollbar-thumb {
+  @apply bg-accentdark rounded-xl;
+}
+</style>
