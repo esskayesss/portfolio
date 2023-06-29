@@ -1,8 +1,8 @@
 <template>
     <div class="bgblur w-screen h-screen top-0 left-0 overflow-hidden">
-        <div class="e1 bg-accentdark absolute left-[70vw] top-[10vh]" id="accentdark"></div>
-        <div class="e2 bg-accentlight absolute left-[40vw] top-[20vh]" id="accentlight"></div>
-        <div class="e1 bg-zinc-800 absolute left-[40vw] top-[50vh]" id="zinc800"></div>
+        <div class="e1 bg-accentlight tab:bg-accentdark absolute left-[70vw] top-[10vh] " id="accentdark"></div>
+        <div class="e2 bg-accentlight absolute left-[40vw] top-[20vh] hidden tab:flex" id="accentlight"></div>
+        <div class="e1 bg-zinc-800 absolute left-[40vw] top-[50vh] hidden tab:flex" id="zinc800"></div>
         <div class="e2 bg-zinc-400 absolute left-[60vw] top-[45vh]" if="zinc400"></div>
     </div>
 </template>

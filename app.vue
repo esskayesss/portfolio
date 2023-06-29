@@ -1,23 +1,10 @@
 <template>
-  <div class="overflow-x-hidden">
-    <div class="lg:hidden h-screen w-screen align-middle flex justify-center">
-      <div class="m-auto text-center h-fit w-fit text-3xl max-w-[80%] font-semibold">
-        <p>
-          visit on a larger device
-        </p>
-        <p class="text-xl mt-4">
-          this website is presently optimized for larger displays only.
-        </p>
-      </div>
-    </div>
-    <MeshBakground class="absolute top-0 left-0 fixed z-[-1]" />
-    <NavBar class="absolute hidden lg:flex left-0 top-0 px-14 z-10" />
-    <!-- <div class="hidden lg:grid grid-cols-11 grid-rows-1 h-[90vh] py-[10vh] mt-[10vh] px-20 w-screen">
-      <LeftPane class="col-span-4 h-full w-fit overflow-hidden" />
-      <RightPane class="overflow-y-scroll col-span-7 mx-auto w-full" />
-    </div> -->
-    <div class="flex h-[90vh] py-[10vh] mt-[10vh] px-14 w-screen">
-      <LeftPane class="max-w-[40%] h-full w-fit overflow-hidden leftpane" />
+  <div class="overflow-x-hidden tab:max-h-screen tab:overflow-y-hidden">
+    <MeshBakground class="fixed top-0 left-0 fixed z-[-1]" />
+    <NavBar class="absolute tab:flex left-0 top-0 px-4 md:px-10 tab:px-14 z-10 max-h-[10vh]" />
+    <div class="flex flex-col gap-16 tab:flex-row tab:h-[90vh] pt-[10vh] tab:pb-[10vh] mt-[10vh] w-screen">
+      <LeftPane
+        class="mx-auto w-full min-h-[80vh] tab:min-h-0 tab:max-w-[40%] min-h-full w-fit overflow-hidden leftpane py-20 tab:py-0" />
       <RightPane class="max-w-full overflow-x-hidden overflow-y-scroll mx-auto w-full px-6 rightpane" />
     </div>
   </div>

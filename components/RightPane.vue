@@ -35,7 +35,7 @@ const showcase = ref<{
 </script>
 
 <template>
-    <div class="flex flex-col gap-20 max-h-full overflow-y-overlay h-fit">
+    <div class="flex flex-col gap-20 max-h-full overflow-y-overlay h-fit pb-6" id="content">
         <ShowcaseCard v-for="element in showcase" :key="element.id" :data="element.data" :title="element.title"
             :idval="element.id" />
     </div>

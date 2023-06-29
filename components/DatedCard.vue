@@ -1,21 +1,12 @@
 <script lang="ts" setup>
-import { client } from 'process';
-
-const storageClient = useSupabaseStorage().client;
 const { data } = defineProps<{
     data: any
 }>();
-if (data.thumbnail_path) {
-    const { data: imgdata, err } = await storageClient.storage.from('assets').download(data.thumbnail_path)
-    if (err) {
-    }
-    data.url = URL.createObjectURL(imgdata)
-}
 </script>
 
 <template>
     <NuxtLink :to="data.link"
-        class="hover:bg-zinc-800/40 p-4 rounded-md font-medium duration-200 flex flex-col gap-2 link h-full ">
+        class="tab:hover:bg-zinc-400/10 p-4 rounded-md font-medium duration-200 flex flex-col gap-2 link h-full relative">
         <div class="h-full align-top w-fit" v-if="data.when">
             <div class="capitalize text-zinc-400 text-md font-semibold align-top min-w-fit">
                 {{ data.when }}
@@ -46,8 +37,22 @@ if (data.thumbnail_path) {
 </template>
 
 <style>
+.goicon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
 .link:hover .goicon {
     @apply text-xl;
     transform: translateX(5px);
+}
+
+@media screen and (max-width: 786px) {
+    .link {
+        @apply bg-zinc-400/10 backdrop-blur-3xl
+    }
+
+
 }
 </style>

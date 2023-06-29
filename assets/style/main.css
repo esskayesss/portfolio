@@ -20,3 +20,7 @@
 body {
     @apply text-zinc-300 bg-zinc-950;
 }
+
+a:focus {
+    outline: none;
+}

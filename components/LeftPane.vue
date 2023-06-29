@@ -1,16 +1,19 @@
+<script lang="ts" setup>
+const scrollToContent = () => {
+    const content = document.getElementById('content');
+    if (content) {
+        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+</script>
+
 <template>
-    <div class="flex flex-col h-full justify-between">
-        <div class="about flex flex-col gap-10">
-            <HeroText />
-            <div class="about">
-                <p class="text-2xl font-semibold text-zinc-100">
-                    about.
-                </p>
-                <div class="text-lg text-zinc-300">
-                    wonder wonder
-                </div>
-            </div>
+    <div class="flex flex-col h-full space-around gap-20 tab:justify-between text-center md:px-10 tab:px-14 ">
+        <HeroText class="tab:text-left" />
+        <SocialLinks class="h-fit w-fit tab:w-full overflow-hidden mx-auto" />
+        <div class="block tab:hidden">
+            <Icon name="ic:sharp-keyboard-double-arrow-down"
+                class="block tab:hidden h-fit w-fit mx-auto text-7xl md:text-5xl" @click="scrollToContent" />
         </div>
-        <SocialLinks class="h-fit w-full text-center overflow-hidden" />
     </div>
 </template>

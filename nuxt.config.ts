@@ -46,6 +46,11 @@ export default defineNuxtConfig({
             accentdark: "#00982B",
             accentlight: "#27ff20"
           },
+          screens: {
+            "mob": "1100px",
+            "tab": "1200px",
+            "desktop": "1440px"
+          }
         }
       }
     }
