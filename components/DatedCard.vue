@@ -48,7 +48,7 @@ const { data } = defineProps<{
     transform: translateX(5px);
 }
 
-@media screen and (max-width: 786px) {
+@media screen and (max-width: 1150px) {
     .link {
         @apply bg-zinc-400/10 backdrop-blur-3xl
     }

@@ -13,7 +13,7 @@ const scrollToContent = () => {
         <SocialLinks class="h-fit w-fit tab:w-full overflow-hidden mx-auto" />
         <div class="block tab:hidden">
             <Icon name="ic:sharp-keyboard-double-arrow-down"
-                class="block tab:hidden h-fit w-fit mx-auto text-7xl md:text-5xl" @click="scrollToContent" />
+                class="block tab:hidden h-fit w-fit mx-auto text-7xl md:text-3xl" @click="scrollToContent" />
         </div>
     </div>
 </template>

@@ -48,7 +48,7 @@ export default defineNuxtConfig({
           },
           screens: {
             "mob": "1100px",
-            "tab": "1200px",
+            "tab": "1150px",
             "desktop": "1440px"
           }
         }
