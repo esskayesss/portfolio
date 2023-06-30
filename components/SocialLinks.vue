@@ -7,32 +7,32 @@ const socialLinks = ref<{
     {
         name: 'Github',
         url: 'https://github.com/esskayesss',
-        icon: 'uil:github',
+        icon: 'ph:github-logo-duotone',
     },
     {
         name: 'LinkedIn',
         url: 'https://www.linkedin.com/in/esskayesss/',
-        icon: 'radix-icons:linkedin-logo',
+        icon: 'ph:linkedin-logo-duotone',
     },
     {
         name: 'Youtube',
         url: 'https://www.youtube.com/@esskayesss',
-        icon: 'uil:youtube',
+        icon: 'ph:youtube-logo-duotone',
     },
     {
         name: 'blog',
         url: 'https://blog.esskayesss.dev/',
-        icon: 'radix-icons:globe',
+        icon: 'ph:globe-hemisphere-east-duotone',
     },
     {
         name: 'Twitter',
         url: 'https://twitter.com/esskayesss_',
-        icon: 'radix-icons:twitter-logo',
+        icon: 'ph:twitter-logo-duotone',
     },
     {
         name: 'Email',
         url: 'mailto:imesskayesss@gmail.com',
-        icon: 'radix-icons:envelope-closed',
+        icon: 'ic:twotone-email',
     }
 ])
 </script>
@@ -42,7 +42,7 @@ const socialLinks = ref<{
         <ul class="flex flex-row gap-4">
             <li v-for="slinks in  socialLinks " :key="slinks.name">
                 <a :href="slinks.url" target="_blank" rel="noopener noreferrer">
-                    <Icon :name="slinks.icon" class="text-2xl" />
+                    <Icon :name="slinks.icon" class="text-xl fold:text-2xl" />
                 </a>
             </li>
         </ul>
