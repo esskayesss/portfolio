@@ -47,6 +47,7 @@ export default defineNuxtConfig({
             accentlight: "#27ff20"
           },
           screens: {
+            "fold": "325px",
             "mob": "1100px",
             "tab": "1150px",
             "desktop": "1440px"

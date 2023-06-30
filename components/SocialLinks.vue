@@ -38,11 +38,11 @@ const socialLinks = ref<{
 </script>
 
 <template>
-    <div class="social-links">
+    <div class="max-w-fit">
         <ul class="flex flex-row gap-4">
             <li v-for="slinks in  socialLinks " :key="slinks.name">
                 <a :href="slinks.url" target="_blank" rel="noopener noreferrer">
-                    <Icon :name="slinks.icon" class="text-3xl" />
+                    <Icon :name="slinks.icon" class="text-2xl" />
                 </a>
             </li>
         </ul>

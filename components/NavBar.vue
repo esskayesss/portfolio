@@ -39,7 +39,7 @@ const scrollIDToView = (id: string) => {
     <div class="w-full flex justify-between items-center py-16 max-h-[10vh]">
         <img src="~/assets/images/avatar-round.png" class="w-[75px] h-[75px] rounded-full border-2 header-img" />
         <nav>
-            <ul class="hidden tab:flex space-x-10 text-xl font-semibold">
+            <ul class="hidden tab:flex space-x-10 font-semibold text-lg">
                 <li>
                     <a href="https://blog.esskayesss.dev" class="py-4 navlink duration-700" target="_blank">blog.</a>
                 </li>
