@@ -14,14 +14,15 @@
                     about
                 </h2>
                 <p class="text-xs fold:text-sm text-zinc-300">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt molestiae perspiciatis unde beatae
-                    excepturi. Beatae repudiandae laboriosam dolorum eos saepe aut officia esse, error ducimus est quis
-                    itaque soluta illo quibusdam porro iste sequi vel excepturi! Amet velit eaque provident id rem esse est
-                    quaerat aspernatur at voluptate explicabo, quia animi quae quidem. Quidem, dolorum ea eum nobis facilis
-                    magnam, esse maiores hic facere accusantium numquam culpa minus dolor debitis?
+                    As a passionate student and tech enthusiast pursuing a BTech in Computer Science and Engineering, my
+                    specialization lies in Artificial Intelligence and Machine Learning. I actively refine my algorithmic
+                    and problem-solving skills through competitive programming. Additionally, I engage in various projects
+                    encompassing web development, data science, and natural language processing. I achieved a top 1% rank on
+                    TryHackMe, a cybersecurity platform. After resetting my progress, I am now documenting my challenge
+                    solutions and insights on my blog to share knowledge with the tech community. Eager to explore new
+                    possibilities and contribute to the ever-evolving world of technology.
                 </p>
             </div>
-        </div>
     </div>
-</template>
+</div></template>
 
