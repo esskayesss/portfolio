@@ -1,5 +1,6 @@
 import React from "react";
 import hljs from 'highlight.js';
+// @ts-ignore
 import hljsz from 'highlightjs-zig';
 import 'highlight.js/styles/github-dark.css';
 import Image from "next/image";
