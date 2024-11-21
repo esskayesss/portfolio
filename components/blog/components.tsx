@@ -20,6 +20,7 @@ function extractLangAndFilename(input: string): { lang: string; filename: string
   return null;
 }
 
+// @ts-ignore
 function Code({children, className, ...props}) {
   if (!className) {
     return <span className={`bg-blue-bg inline-block w-fit m-0 px-2`}>{children}</span>
@@ -90,6 +91,7 @@ function BlogImage({...props}) {
   )
 }
 
+// @ts-ignore
 function Anchor({children, ...props}) {
   return (
     <a href={props['href']} {...props}
@@ -99,6 +101,7 @@ function Anchor({children, ...props}) {
   )
 }
 
+// @ts-ignore
 function Header({children, ...props}) {
   const id = children.toString().replaceAll(" ", "-").toLowerCase();
   return (

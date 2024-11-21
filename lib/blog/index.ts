@@ -114,7 +114,7 @@ export const getTOC = async (slug: string): Promise<TOC> => {
     .use(() => (tree) => {
       visit(tree, 'heading', (node) => {
         // console.log(JSON.stringify(node));
-        headings.push(node.children[0].value);
+        headings.push(node['children'][0]['value']);
         // headings.push(node.value.replaceAll(" ", "-").toLowerCase());
       });
     })

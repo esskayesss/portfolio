@@ -1,3 +1,4 @@
+import {SVGProps} from "react";
 
 export function MingcuteWorldLine(props: SVGProps<SVGSVGElement>) {
   return (
