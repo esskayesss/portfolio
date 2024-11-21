@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {PiArrowUpRight, PiLink} from "react-icons/pi";
 import {CopyToClipboard} from "@/components/ui/clipboard-copy";
+import {MDXComponents} from "mdx/types";
 
 function extractLangAndFilename(input: string): { lang: string; filename: string } | null {
   const regex = /^language-(\w+):(.+)$/;
@@ -118,4 +119,4 @@ export default {
   code: Code,
   img: BlogImage,
   a: Anchor,
-}
+} as MDXComponents
