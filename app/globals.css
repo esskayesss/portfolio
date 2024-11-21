@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-size: 10px;
+    --size-xs: 11px;
+    --size-sm: 12px;
+    --size-base: 14px;
+    --size-lg: 16px;
+    --size-xl: 20px;
+    --size-2xl: 20px;
+    --size-3xl: 24px;
+
+    /* Syntax Colors */
+    --sh-class: #7AA8A7;
+    --sh-identifier: #597BC0;
+    --sh-sign: #BDBFCB;
+    --sh-property: #BA9A5E;
+    --sh-entity: #B4647F;
+    --sh-jsxliterals: #D29146;
+    --sh-string: #9CB67D;
+    --sh-keyword: #A188C3;
+    --sh-comment: #656771;
+}
+
+@media (min-width: 600px) {
+    :root {
+        font-size: 10px;
+        --size-xs: 12px;
+        --size-sm: 13px;
+        --size-base: 14px;
+        --size-lg: 16px;
+        --size-xl: 18px;
+        --size-2xl: 20px;
+        --size-3xl: 24px;
+    }
+}
+
+* {
+    scroll-margin-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply font-mono bg-bg text-fg px-8 pb-8 min-h-dvh text-base;
+}
+
+main {
+    @apply flex flex-col gap-12 py-4 max-w-6xl mx-auto;
+}
+
+a {
+    @apply underline underline-offset-2;
+}
+
+h1 {
+    @apply text-accent-fg text-xl font-proto;
+}
+
+.section {
+    @apply flex flex-col gap-2.5;
+
+    .heading {
+        @apply flex justify-between items-center;
+
+        a {
+            @apply font-proto text-base bg-blue-bg no-underline hover:underline cursor-pointer;
+        }
+    }
+
+    .content {
+        @apply flex flex-col gap-8;
+
+        p {
+            @apply gap-1 flow-root;
+        }
+    }
+}
+
+.animate {
+    @apply transition duration-500 ease-in-out;
+}
+
+.center-row {
+    @apply flex items-center gap-1;
+}
+
+.btn {
+    @apply flex gap-2.5 px-4 py-1 items-center bg-fg text-bg text-base whitespace-nowrap;
+}
+
+.tag {
+    @apply px-4 py-1 border rounded-sm;
+}
+
+pre {
+    @apply bg-accent-bg border border-blue-fg my-4 relative flex flex-col gap-4;
+}
+
+pre code {
+    @apply flex flex-col pt-0 p-4 overflow-x-scroll;
+}
