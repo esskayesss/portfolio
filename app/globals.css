@@ -50,10 +50,6 @@ main {
     @apply flex flex-col gap-12 py-4 max-w-6xl mx-auto;
 }
 
-a {
-    @apply underline underline-offset-2;
-}
-
 h1 {
     @apply text-accent-fg text-xl font-proto;
 }
@@ -74,6 +70,10 @@ h1 {
 
         p {
             @apply gap-1 flow-root;
+        }
+
+        a {
+            @apply text-blue-fg no-underline hover:underline underline-offset-2;
         }
     }
 }

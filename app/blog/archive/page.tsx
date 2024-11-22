@@ -4,6 +4,7 @@ import {getBlogPosts} from "@/lib/blog";
 
 export default async function BlogHome() {
   const articles = await getBlogPosts();
+
   return (
     <main>
       <div className={'section'}>
@@ -11,6 +12,7 @@ export default async function BlogHome() {
           <h1>Blog Archive</h1>
         </div>
         <div className="content">
+          {articles.length === 0 && <p>I'm just a chill guy.</p>}
           {articles.map((article, _idx) => (
             <BlogCard key={_idx} thumbnail={false} {...article} />
           ))}

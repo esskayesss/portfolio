@@ -1,4 +1,3 @@
-import React from "react";
 import hljs from 'highlight.js';
 // @ts-ignore
 import hljsz from 'highlightjs-zig';
@@ -23,7 +22,10 @@ function extractLangAndFilename(input: string): { lang: string; filename: string
 // @ts-ignore
 function Code({children, className, ...props}) {
   if (!className) {
-    return <span className={`bg-blue-bg inline-block w-fit m-0 px-2`}>{children}</span>
+    return <span className={`border border-yellow-bg bg-dim-bg inline-block w-fit m-0 px-2`}>
+      <span className={`select-none`}>`</span>
+      {children}
+      <span className={`select-none`}>`</span></span>
   }
 
   hljs.registerLanguage('zig', hljsz);
@@ -94,10 +96,10 @@ function BlogImage({...props}) {
 // @ts-ignore
 function Anchor({children, ...props}) {
   return (
-    <a href={props['href']} {...props}
+    <Link href={props['href']} {...props}
        className={`inline-flex items-center no-underline text-blue-fg hover:underline`}>
       {children} {props['href'].startsWith('https://') ? <PiArrowUpRight/> : null}
-    </a>
+    </Link>
   )
 }
 

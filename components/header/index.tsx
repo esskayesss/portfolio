@@ -1,12 +1,12 @@
 import Image from "next/image"
-import {PiList, PiMagnifyingGlass} from "react-icons/pi"
+import {PiMagnifyingGlass} from "react-icons/pi"
 import React from "react";
 import {Navigation} from "@/components/ui/nav";
 import Link from "next/link";
 
 export const Header: React.FC<{blog?: boolean}> = ({blog = false}) => {
   return (
-    <header className="flex justify-between w-full z-50 sticky py-4 top-0 left-0 z-9 bg-bg max-w-6xl mx-auto">
+    <header className="flex shadow-bg shadow-lg justify-between w-full z-50 sticky py-4 top-0 left-0 z-9 bg-bg max-w-6xl mx-auto">
       <Link href={`/${blog?'blog':''}`} className="flex font-proto text-xl items-center gap-2 no-underline">
         <Image src="/logo.webp" width="14" height="14" alt="contour logo" />
         <h1>esskayesss</h1>

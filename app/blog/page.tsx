@@ -13,6 +13,7 @@ export default async function BlogHome() {
           <Link href={`/blog/archive`}>See all</Link>
         </div>
         <div className="content">
+          {articles.length === 0 && <p>I'm just a chill guy.</p>}
           {articles.map((article, _idx) => (
             <BlogCard key={_idx} {...article} />
           ))}
