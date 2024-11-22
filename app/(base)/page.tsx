@@ -28,15 +28,12 @@ export default async function Home() {
           <ProjectListEntry
             title={'b64ed'}
             github={'esskayesss/b64ed'}
-            blog={'b64ed-slug'}
             >
-            Plug-and-play system auditing tool. Secure, monitor, and control your machines with unmatched precision–from a single endpoint to your global network.
+            A simple base64 encoder and decoder implemented from scratch in c.
           </ProjectListEntry>
           <ProjectListEntry
             title={'clishae'}
             github={'esskayesss/clishae'}
-            website={'https://helmdall.com'}
-            blog={'b64ed-slug'}
           >
             CLIshae is a cURL-focussed multi-threaded pastebin server written from scratch in C. It has a complete implementation of HTTP/1.1 and uses system calls and low-level kernel calls.
           </ProjectListEntry>
