@@ -16,11 +16,9 @@ export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: bod
       <div className="flex justify-between items-center">
         <span>{props.title}</span>
         <div className="flex gap-1">
+          {props.website && <TagLink href={props.website} />}
           {props.github &&
-              <TagLink external icon={'github'}
-                       color={'green'} title={props.github}
-                       href={'https://github.com/' + props.github} />}
-          {props.website && <TagLink external href={props.website} />}
+              <TagLink title={props.website?'':props.github} href={'https://github.com/' + props.github} />}
         </div>
       </div>
       <div className="text-dim-fg">

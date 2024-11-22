@@ -35,6 +35,7 @@ export default async function Home() {
           <ProjectListEntry
             title={'clishae'}
             github={'esskayesss/clishae'}
+            website={'https://helmdall.com'}
             blog={'b64ed-slug'}
           >
             CLIshae is a cURL-focussed multi-threaded pastebin server written from scratch in C. It has a complete implementation of HTTP/1.1 and uses system calls and low-level kernel calls.

@@ -1,7 +1,7 @@
 import hljs from 'highlight.js';
 // @ts-ignore
 import hljsz from 'highlightjs-zig';
-import 'highlight.js/styles/github-dark.css';
+// import 'highlight.js/styles/github-dark.css';
 import Image from "next/image";
 import Link from "next/link";
 import {PiArrowUpRight, PiLink} from "react-icons/pi";
