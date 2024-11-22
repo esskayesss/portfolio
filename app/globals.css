@@ -36,7 +36,7 @@ body {
 }
 
 main {
-    @apply flex flex-col gap-12 py-4 max-w-6xl mx-auto;
+    @apply flex flex-col gap-12 py-4 max-w-6xl w-full mx-auto;
 }
 
 h1 {
