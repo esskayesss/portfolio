@@ -32,7 +32,7 @@
 }
 
 body {
-    @apply font-mono bg-bg text-fg px-8 pb-8 min-h-dvh text-base;
+    @apply font-mono flex flex-col bg-bg text-fg px-8 pb-8 min-h-dvh text-base;
 }
 
 main {

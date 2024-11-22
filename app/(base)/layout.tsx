@@ -10,7 +10,9 @@ export default function BaseLayout({
   return (
     <>
       <Header />
-      {children}
+      <div className={`h-full w-full flex-grow flex-col`}>
+        {children}
+      </div>
       <Footer />
     </>
   );

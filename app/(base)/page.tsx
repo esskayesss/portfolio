@@ -63,21 +63,21 @@ export default async function Home() {
           <h1>certifications and achievements</h1>
         </div>
         <div className={'contents'}>
-          <CertListEntry title={'C Programming with Linux Specialization'} issuer={'Coursera'} href={''}>
-            <p>The C Programming with Linux Specialization from IMT and Dartmouth, provides the skills to write, read
+          <CertListEntry title={'C Programming with Linux'} issuer={'Coursera'} href={''}>
+            The C Programming with Linux Specialization from IMT and Dartmouth, provides the skills to write, read
               and debug computer programs in the C programming language. This course also improved my familiarity with
-              the linux operating system.</p>
+              the linux operating system.
           </CertListEntry>
           <CertListEntry title={'Neural Networks and Deep Learning'} issuer={'Coursera'} href={''}>
-            <span>A foundational course on Neural Networks by <Link
-              href={'https://deeplearning.ai'}>deeplearning.ai</Link>.</span>
+            A foundational course on Neural Networks by <Link
+              href={'https://deeplearning.ai'}>deeplearning.ai</Link>.
           </CertListEntry>
           <CertListEntry title={'Winner · Kavach Hackathon, 2023'} issuer={'Contest'} href={''}>
-            <p>Kavach is a cybersecurity hackathon organized by the Innovation Cell of the Ministry of Education, AICTE,
-              in collaboration with the wings of the Ministry of Home Affairs - BPR&D and I4C.</p>
+            Kavach is a cybersecurity hackathon organized by the Innovation Cell of the Ministry of Education, AICTE,
+              in collaboration with the wings of the Ministry of Home Affairs - BPR&D and I4C.
           </CertListEntry>
           <CertListEntry title={'Winner · Smart India Hackathon, 2023'} issuer={'Contest'} href={''}>
-            <p>SIH is a national hackathon organized by AICTE, Innovation Cell of the Ministry of Education.</p>
+            SIH is a national hackathon organized by AICTE, Innovation Cell of the Ministry of Education.
           </CertListEntry>
         </div>
       </div>
