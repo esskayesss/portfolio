@@ -11,8 +11,8 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="section">
-        <h1>Hi! I'm Saurabh Sharma. 👋</h1>
+      <div className="section w-full">
+        <h1>Hi! I'm Saurabh Sharma. 👋🏼</h1>
         <p>
           Hey! I'm Saurabh. I’m a final year CS student. I build things from scratch and peek behind abstractions. I'm obsessed with understanding how computers work at their lowest levels – both in silicon and software. You'll find me writing C and Zig, implementing protocols from scratch or tinkering with hardware. I value curiosity, first principles thinking, and getting my hands dirty with fundamentals. When I'm not coding close to the metal, I'm probably exploring new languages or rebuilding tools to figure out how they work.
         </p>
