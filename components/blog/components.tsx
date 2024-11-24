@@ -18,6 +18,36 @@ function extractLangAndFilename(input: string): { lang: string; filename: string
   return null;
 }
 
+interface TableData {
+  headers: Array<string>;
+  rows: string[][];
+}
+
+function Table(data: TableData) {
+  console.log(JSON.stringify(data))
+  let headers = data.headers.map((header: string, index: number) => (
+    <th className={`font-proto items-start h-fit`} key={index}>{header}</th>
+  ))
+  let rows = data.rows.map((row: string[], index: number) => (
+    <tr key={index}>
+      {row.map((cell: string, cellIndex: number) => (
+        <td key={cellIndex}>{cell}</td>
+      ))}
+    </tr>
+  ))
+
+  return (
+    <div className={`x-scroll-container`}>
+      <table>
+        <thead>
+        <tr>{headers}</tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
+  )
+}
+
 // @ts-ignore
 function Code({children, className, ...props}) {
   if (!className) {
@@ -124,4 +154,5 @@ export default {
   code: Code,
   img: BlogImage,
   a: Anchor,
+  Table
 } as MDXComponents

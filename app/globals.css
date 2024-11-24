@@ -29,6 +29,7 @@
 * {
     scroll-margin-top: 6rem;
     scroll-behavior: smooth;
+    @apply overflow-x-hidden;
 }
 
 *::selection {
@@ -72,6 +73,44 @@ blockquote {
     }
 }
 
+pre {
+    @apply bg-bg border border-blue-fg my-4 relative flex flex-col gap-4;
+}
+
+pre code {
+    @apply flex flex-col pt-0 p-4 overflow-x-scroll;
+}
+
+table {
+    @apply w-full table-auto my-4;
+
+    thead tr {
+        @apply border-b-2;
+
+        th {
+            @apply text-left font-proto text-sm whitespace-nowrap px-2;
+        }
+    }
+
+    tr {
+        @apply border-b border-ghost;
+    }
+
+    td {
+        @apply border-x border-ghost px-4;
+    }
+}
+.blog{
+    h1 {
+        @apply leading-tight;
+    }
+}
+
+.disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+
 .section {
     @apply flex flex-col gap-2.5;
 
@@ -112,22 +151,8 @@ blockquote {
     @apply px-4 py-1 border rounded-sm;
 }
 
-pre {
-    @apply bg-bg border border-blue-fg my-4 relative flex flex-col gap-4;
-}
-
-pre code {
-    @apply flex flex-col pt-0 p-4 overflow-x-scroll;
-}
-
-.blog{
-    h1 {
-        @apply leading-tight;
-    }
-}
-
-.disabled {
-    @apply opacity-50 cursor-not-allowed;
+.x-scroll-container {
+    @apply w-full overflow-x-auto;
 }
 
 /* hljs yorumi theme */
