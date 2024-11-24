@@ -22,11 +22,11 @@ export const Blog: React.FC<{slug: string}> = async ({slug}: {slug: string}) => 
       <div className="about flex flex-col gap-4">
         <div className="font-proto flex gap-4 text-sm">
           <span className={'tag bg-dim-bg border-accent-fg'}>{contents.type}</span>
-          {contents.collection? <span className={'tag bg-blue-bg border-yellow-fg'}>{contents.collection}</span> : null}
+          {contents.collection? <span className={'tag bg-blue-bg border-yellow-fg'}>SERIES: {contents.collection}</span> : null}
         </div>
         <div className="text-sm text-dim-fg">{contents.date} · {contents.reading_time.minutes} minute read </div>
         <div className="flex flex-col">
-          <span className={`text-xl font-proto`}>{contents.title}</span>
+          <h1 className={`text-xl text-fg font-proto`}>{contents.title}</h1>
           <p className={`text-base text-dim-fg`}>{contents.description}</p>
         </div>
         {contents.cover_image?

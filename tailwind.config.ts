@@ -29,7 +29,7 @@ export default {
 
         accent: {
           fg: "#C6DFEC",
-          bg: "#070B14",
+          bg: "#0E121F",
         },
 
         yellow: {

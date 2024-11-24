@@ -22,7 +22,7 @@ const NavigationMenu: React.FC<{
 
   return (
     <>
-      <div className={`w-screen h-screen fixed left-0 top-16 z-10 backdrop-blur-sm ${className}`} onClick={onClick}></div>
+      <div className={`w-screen h-screen fixed left-0 top-16 z-50 backdrop-blur-sm ${className}`} onClick={onClick}></div>
       <div
         className={`${className} absolute z-50 right-0 top-full my-4 py-10 px-8 bg-bg border-2 border-accent-fg shadow-xl`}>
         <nav

@@ -1,7 +1,6 @@
 import hljs from 'highlight.js';
 // @ts-ignore
 import hljsz from 'highlightjs-zig';
-// import 'highlight.js/styles/github-dark.css';
 import Image from "next/image";
 import Link from "next/link";
 import {PiArrowUpRight, PiLink} from "react-icons/pi";
@@ -22,7 +21,7 @@ function extractLangAndFilename(input: string): { lang: string; filename: string
 // @ts-ignore
 function Code({children, className, ...props}) {
   if (!className) {
-    return <span className={`border border-yellow-bg bg-dim-bg inline-block w-fit m-0 px-2`}>
+    return <span className={`font-regular !font-mono text-accent-fg bg-dim-bg inline-block w-fit m-0 px-2`}>
       <span className={`select-none`}>`</span>
       {children}
       <span className={`select-none`}>`</span></span>
@@ -60,9 +59,9 @@ function Code({children, className, ...props}) {
 
   return (
     <>
-      <div className="metadata flex items-center justify-between p-4 bg-dim-bg border-b border-blue-fg">
+      <div className="metadata flex items-center justify-between p-4 bg-accent-bg border-b border-blue-fg">
         <div className="about flex gap-4 items-center">
-          <span className={`tag font-proto bg-bg`}>{lang}</span>
+          <span className={`tag font-proto bg-bg text-xs border-dim-fg`}>{lang}</span>
           <span>{filename}</span>
         </div>
         <CopyToClipboard text={children}/>
@@ -95,10 +94,12 @@ function BlogImage({...props}) {
 
 // @ts-ignore
 function Anchor({children, ...props}) {
+  const external = (props.href.startsWith('https://') || props.href.startsWith('http://'))
+    && !props.href.startsWith('https://esskayesss.dev');
   return (
     <Link href={props['href']} {...props}
-       className={`inline-flex items-center no-underline text-blue-fg hover:underline`}>
-      {children} {props['href'].startsWith('https://') ? <PiArrowUpRight/> : null}
+          className={`inline-flex items-center no-underline text-blue-fg hover:underline`}>
+      {children} {external ? <PiArrowUpRight/> : null}
     </Link>
   )
 }
@@ -107,16 +108,14 @@ function Anchor({children, ...props}) {
 function Header({children, ...props}) {
   const id = children.toString().replaceAll(" ", "-").toLowerCase();
   return (
-    <div className={`flex items-center gap-2`}>
-      <h1 id={id} {...props} className={`${props.className} flex flex-wrap items-center gap-2`}>
-        <span>
-          {children}
-          <Link href={`#${id}`} className={`inline-flex items-center text-lg pl-4`}>
-            <PiLink className={`text-dim-fg`}/>
-          </Link>
-        </span>
-      </h1>
-    </div>
+    <h1 id={id} {...props} className={`${props['className']} flex flex-wrap items-center gap-2`}>
+      <span>
+      {children}
+        <Link href={`#${id}`} className={`inline-flex items-center text-lg pl-4`}>
+        <PiLink className={`text-dim-fg`}/>
+      </Link>
+      </span>
+    </h1>
   );
 }
 

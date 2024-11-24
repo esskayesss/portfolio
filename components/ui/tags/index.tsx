@@ -40,7 +40,7 @@ export const Tag: React.FC<TagProps> = ({title, icon = 'none', color = 'magenta'
   const color_class = `bg-${color}-bg`;
   return (
     <div className={`no-underline flex items-center gap-1 px-1 ${color_class}`}>
-      <span className={'text-lg'}>{icon_map[icon]}</span>
+      {icon != 'none'?<span className={'text-lg'}>{icon_map[icon]}</span>:null}
       <span>{ title }</span>
     </div>
   )

@@ -46,7 +46,11 @@ export interface BlogPost extends BlogBrief{
   prev_slug: string | undefined;
 }
 
+let postsMetadata: Array<BlogBrief> | undefined = undefined;
+
 export const getBlogPosts = async (): Promise<Array<BlogBrief>> => {
+  if(postsMetadata) return postsMetadata;
+
   const paths = await globby(`./content/**/*.mdx`);
   const blogs: Array<BlogBrief> = []
   paths.forEach((path) => {
@@ -67,11 +71,12 @@ export const getBlogPosts = async (): Promise<Array<BlogBrief>> => {
       reading_time: calculateReadingTime(body)
     } as BlogBrief)
   });
-  return blogs.sort((a, b) => { return new Date(b.date).getTime() - new Date(a.date).getTime() });
+  postsMetadata = blogs.sort((a, b) => { return new Date(b.date).getTime() - new Date(a.date).getTime() });
+  return postsMetadata
 }
 
 export const getXBlogPosts = async (x: number): Promise<Array<BlogBrief>> => {
-  return await getBlogPosts().then((posts) => posts.slice(0, x))
+  return getBlogPosts().then((posts) => posts.slice(0, x))
 }
 
 export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
@@ -113,9 +118,7 @@ export const getTOC = async (slug: string): Promise<TOC> => {
     .use(remarkMdx)
     .use(() => (tree) => {
       visit(tree, 'heading', (node) => {
-        // console.log(JSON.stringify(node));
         headings.push(node['children'][0]['value']);
-        // headings.push(node.value.replaceAll(" ", "-").toLowerCase());
       });
     })
     .process(body);

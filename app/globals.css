@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 :root {
-    font-size: 10px;
-    --size-xs: 11px;
-    --size-sm: 12px;
-    --size-base: 14px;
-    --size-lg: 16px;
-    --size-xl: 20px;
-    --size-2xl: 20px;
-    --size-3xl: 24px;
+    --font-size: 10px;
+    font-size: var(--font-size);
+    --size-xs: 1.1rem;
+    --size-sm: 1.2rem;
+    --size-base: 1.4rem;
+    --size-lg: 1.6rem;
+    --size-xl: 2rem;
+    --size-2xl: 2.2rem;
+    --size-3xl: 2.4rem;
 }
 
 @media (min-width: 600px) {
     :root {
-        font-size: 10px;
-        --size-xs: 12px;
-        --size-sm: 13px;
-        --size-base: 14px;
-        --size-lg: 16px;
-        --size-xl: 18px;
-        --size-2xl: 20px;
-        --size-3xl: 24px;
+        --size-xs: 1.2rem;
+        --size-sm: 1.3rem;
+        --size-base: 1.4rem;
+        --size-lg: 1.6rem;
+        --size-xl: 1.8rem;
+        --size-2xl: 2rem;
+        --size-3xl: 2.4rem;
     }
 }
 
@@ -31,8 +31,16 @@
     scroll-behavior: smooth;
 }
 
+*::selection {
+    @apply bg-ghost text-accent-fg;
+}
+
+*::-moz-selection {
+    @apply bg-ghost text-accent-fg;
+}
+
 body {
-    @apply font-mono flex flex-col bg-bg text-fg px-8 pb-8 min-h-dvh text-base;
+    @apply flex flex-col font-mono bg-bg text-fg px-8 pb-8 min-h-dvh text-base;
 }
 
 main {
@@ -41,6 +49,27 @@ main {
 
 h1 {
     @apply text-accent-fg text-xl font-proto;
+}
+
+p {
+    @apply leading-snug;
+}
+
+blockquote {
+    @apply bg-blue-bg pl-4 pr-2 my-2 py-2 border-l-2 border-dashed border-blue-fg;
+
+    p {
+        @apply !flex flex-col;
+
+        cite {
+            @apply text-accent-fg not-italic font-proto text-xs;
+
+            &::before {
+                content: '- ';
+                @apply text-accent-fg font-mono text-xs;
+            }
+        }
+    }
 }
 
 .section {
@@ -55,7 +84,7 @@ h1 {
     }
 
     .content {
-        @apply flex flex-col gap-8;
+        @apply flex flex-col gap-6;
 
         p {
             @apply gap-1 flow-root;
@@ -84,13 +113,24 @@ h1 {
 }
 
 pre {
-    @apply bg-accent-bg border border-blue-fg my-4 relative flex flex-col gap-4;
+    @apply bg-bg border border-blue-fg my-4 relative flex flex-col gap-4;
 }
 
 pre code {
     @apply flex flex-col pt-0 p-4 overflow-x-scroll;
 }
 
+.blog{
+    h1 {
+        @apply leading-tight;
+    }
+}
+
+.disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+/* hljs yorumi theme */
 .hljs-comment { color: #656771; }
 .hljs-quote { color: #656771; }
 .hljs-keyword { color: #a188c3; }

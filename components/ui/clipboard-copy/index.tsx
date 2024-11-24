@@ -2,9 +2,8 @@
 
 import {PiCheckCircle, PiCopy} from "react-icons/pi";
 import React from "react";
-import {IoCheckmarkDone} from "react-icons/io5";
 
-export const CopyToClipboard: React.FC<{text: string}> = ({text}) => {
+export const CopyToClipboard: React.FC<{children?: React.ReactNode | undefined, text: string}> = ({children, text}) => {
   const [isCopied, setIsCopied] = React.useState(false);
   const copy = () => {
     navigator.clipboard.writeText(text).then(() => {
@@ -17,7 +16,7 @@ export const CopyToClipboard: React.FC<{text: string}> = ({text}) => {
     <span className={`relative cursor-pointer animate`} onClick={copy}>
       {isCopied ?
         <PiCheckCircle className={`text-green-fg text-2xl`} /> :
-        <PiCopy className={`text-2xl`} />
+        children?children:<PiCopy className={`text-2xl`} />
       }
     </span>
   )
