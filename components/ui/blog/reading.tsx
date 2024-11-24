@@ -127,14 +127,6 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
               ))}
             </span>
           </div>
-          {/*{share_options.map(({href, element}, index) => (*/}
-          {/*  <Link key={index}*/}
-          {/*        href={href}*/}
-          {/*        onClick={onClick}*/}
-          {/*        className={`no-underline hover:bg-dim-bg flex gap-2 items-center w-fit mr-auto text-lg `}>*/}
-          {/*    {element}*/}
-          {/*  </Link>*/}
-          {/*))}*/}
         </div>
       </div>
     </>

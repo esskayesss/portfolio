@@ -49,11 +49,19 @@ main {
 }
 
 h1 {
-    @apply text-accent-fg text-xl font-proto;
+    @apply text-accent-fg text-xl leading-tight capitalize font-proto;
 }
 
 p {
     @apply leading-snug;
+}
+
+ul {
+    @apply list-none;
+
+    li::before {
+        content: '- ';
+    }
 }
 
 blockquote {

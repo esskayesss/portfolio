@@ -137,13 +137,20 @@ function Anchor({children, ...props}) {
 // @ts-ignore
 function Header({children, ...props}) {
   const id = children.toString().replaceAll(" ", "-").toLowerCase();
+  const last_word = children.split(' ').pop();
+  children = children.split(' ').slice(0, -1).join(' ') + ' '
+  console.log(children)
+  console.log(last_word)
   return (
     <h1 id={id} {...props} className={`${props['className']} flex flex-wrap items-center gap-2`}>
       <span>
       {children}
-        <Link href={`#${id}`} className={`inline-flex items-center text-lg pl-4`}>
-        <PiLink className={`text-dim-fg`}/>
-      </Link>
+        <span className={`whitespace-nowrap`}>
+          {last_word}
+          <Link href={`#${id}`} className={`inline-flex items-center text-lg pl-4`}>
+            <PiLink className={`text-dim-fg`}/>
+          </Link>
+        </span>
       </span>
     </h1>
   );
