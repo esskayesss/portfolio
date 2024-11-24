@@ -8,7 +8,7 @@ import {PiListBullets} from "react-icons/pi";
 interface TOCProps {
   slug: string,
   onClick: () => void,
-  className: string,
+  className?: string | undefined,
   toc: {
     title: string,
     items: string[]
@@ -52,10 +52,12 @@ const TOC: React.FC<TOCProps> = ({onClick, className, toc}) => {
   const {title, items} = toc;
   return (
     <>
-      <div className={`${className} overlay fixed z-50 backdrop-blur-sm w-screen h-screen left-0 bottom-[6.1rem]`}
+      <div className={`${className} overlay fixed z-40 backdrop-blur-sm w-screen h-screen left-0 bottom-[6.1rem]`}
            onClick={onClick}></div>
       <div
-        className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg absolute bottom-full right-0 mb-12 z-50 pb-4 max-w-[90vw] max-h-[85dvh] border border-accent-fg min-w-[356px] *:px-4 *:py-2 overflow-y-scroll`}>
+        className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg 
+        absolute bottom-full right-0 mb-12 z-50 pb-4 max-w-[90vw] max-h-[85dvh] 
+        border border-accent-fg min-w-[356px] *:px-4 *:py-2 overflow-y-scroll`}>
         <span className={`sticky text-lg py-4 bg-dim-bg border-b mb-4`}>{title}</span>
         {items.map((item, index) => (
           <Link key={index}

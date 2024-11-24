@@ -84,7 +84,6 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
 
   useEffect(() => {
     if (fontStyle !== undefined) {
-      console.log(`Setting font style to ${fontStyle}`);
       setBodyFont(fontClass[fontStyle]);
       localStorage.setItem('blog-font-style', fontStyle.toString());
     }
@@ -101,7 +100,7 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
   return (
     <>
       <LoadingOverlay className={isLoading ? '' : 'hidden'}/>
-      <div className={`${className} overlay fixed z-50 backdrop-blur-sm w-screen h-screen left-0 bottom-[6.1rem]`}
+      <div className={`${className} overlay fixed z-40 backdrop-blur-sm w-screen h-screen left-0 bottom-[6.1rem]`}
            onClick={onClick}></div>
       <div
         className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg absolute mb-12 left-0 bottom-full z-50 pb-4 max-w-[90vw] max-h-[85dvh] border border-accent-fg min-w-[356px] *:px-4 *:py-2 overflow-y-scroll`}>
