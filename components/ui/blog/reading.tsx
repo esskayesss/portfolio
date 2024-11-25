@@ -1,9 +1,8 @@
 'use client';
 
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import {IoCloseOutline} from "react-icons/io5";
 import {PiBookOpenText, PiMinus, PiPlus} from "react-icons/pi";
-import {LoadingOverlay} from "@/components/ui/overlays";
 
 const FONT_SIZE_LIMITS = {
   min: 9,
@@ -51,18 +50,23 @@ export const FormatButton: React.FC = () => {
 }
 
 const Reading: React.FC<ShareProps> = ({onClick, className}) => {
+  const blogRef = useRef<HTMLElement | null>();
   const setBodyFont = (fontClass: FontClass) => {
     const fontVar = getComputedStyle(document.body).getPropertyValue(class_var_map[fontClass]);
-    document.getElementById('blog')?.style.setProperty('font-family', fontVar);
+    if (blogRef)
+      document.getElementById('blog')?.style.setProperty('font-family', fontVar);
   };
 
   const clampFontSize = (size: number) => {
     return Math.min(Math.max(size, FONT_SIZE_LIMITS.min), FONT_SIZE_LIMITS.max);
   };
 
-  const [rootFontSize, setRootFontSize] = React.useState<number>(10);
-  const [fontStyle, setFontStyle] = React.useState<number | undefined>(undefined);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [rootFontSize, setRootFontSize] = React.useState(() =>
+    parseInt(localStorage.getItem('blog-font-size') || '10')
+  );
+  const [fontStyle, setFontStyle] = React.useState(() =>
+    parseInt(localStorage.getItem('blog-font-style') || '0')
+  );
 
   useEffect(() => {
     const stored_size = localStorage.getItem('blog-font-size');
@@ -78,8 +82,6 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
     } else {
       setFontStyle(parseInt(stored_style));
     }
-
-    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -99,11 +101,10 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
 
   return (
     <>
-      <LoadingOverlay className={isLoading ? '' : 'hidden'}/>
       <div className={`${className} overlay fixed z-40 backdrop-blur-sm w-screen h-screen left-0 bottom-[6.1rem]`}
            onClick={onClick}></div>
       <div
-        className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg absolute mb-12 left-0 bottom-full z-50 pb-4 max-w-[90vw] max-h-[85dvh] border border-accent-fg min-w-[356px] *:px-4 *:py-2 overflow-y-scroll`}>
+        className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg absolute mb-12 -left-5 bottom-full z-50 pb-4 w-[356px] max-w-[95vw] max-h-[85dvh] border border-accent-fg *:px-4 *:py-2 overflow-y-scroll`}>
         <span className={`sticky text-lg py-4 bg-dim-bg border-b mb-4`}>READING FORMAT</span>
         <div className="flex flex-col gap-4">
           <div className="flex gap-4 items-center">

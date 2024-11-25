@@ -12,11 +12,19 @@ export default async function Home() {
   return (
     <main>
       <div className="section w-full">
-        <h1>Hi! I'm Saurabh Sharma. 👋🏼</h1>
-        <p>
-          Hey! I'm Saurabh. I’m a final year CS student. I build things from scratch and peek behind abstractions. I'm obsessed with understanding how computers work at their lowest levels – both in silicon and software. You'll find me writing C and Zig, implementing protocols from scratch or tinkering with hardware. I value curiosity, first principles thinking, and getting my hands dirty with fundamentals. When I'm not coding close to the metal, I'm probably exploring new languages or rebuilding tools to figure out how they work.
-        </p>
-        <SocialBar />
+        <div className="heading">
+          <h1>Hi! I'm Saurabh Sharma. 👋🏼</h1>
+        </div>
+        <div className="content">
+          <p>
+            Hey! I'm Saurabh. I’m a final year CS student. I build things from scratch and peek behind abstractions. I'm
+            obsessed with understanding how computers work at their lowest levels – both in silicon and software. You'll
+            find me writing C and Zig, implementing protocols from scratch or tinkering with hardware. I value
+            curiosity, first principles thinking, and getting my hands dirty with fundamentals. When I'm not coding
+            close to the metal, I'm probably exploring new languages or rebuilding tools to figure out how they work.
+          </p>
+          <SocialBar />
+        </div>
       </div>
 
       <div className="section">
@@ -28,7 +36,7 @@ export default async function Home() {
           <ProjectListEntry
             title={'b64ed'}
             github={'esskayesss/b64ed'}
-            >
+          >
             A simple base64 encoder and decoder implemented from scratch in c.
           </ProjectListEntry>
           <ProjectListEntry
@@ -62,7 +70,7 @@ export default async function Home() {
         <div className="heading">
           <h1>certifications and achievements</h1>
         </div>
-        <div className={'contents'}>
+        <div className={'content'}>
           <CertListEntry title={'C Programming with Linux'} issuer={'Coursera'} href={''}>
             The C Programming with Linux Specialization from IMT and Dartmouth, provides the skills to write, read
               and debug computer programs in the C programming language. This course also improved my familiarity with

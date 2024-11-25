@@ -24,7 +24,6 @@ interface TableData {
 }
 
 function Table(data: TableData) {
-  console.log(JSON.stringify(data))
   let headers = data.headers.map((header: string, index: number) => (
     <th className={`font-proto items-start h-fit`} key={index}>{header}</th>
   ))
@@ -139,8 +138,6 @@ function Header({children, ...props}) {
   const id = children.toString().replaceAll(" ", "-").toLowerCase();
   const last_word = children.split(' ').pop();
   children = children.split(' ').slice(0, -1).join(' ') + ' '
-  console.log(children)
-  console.log(last_word)
   return (
     <h1 id={id} {...props} className={`${props['className']} flex flex-wrap items-center gap-2`}>
       <span>

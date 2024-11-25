@@ -39,7 +39,7 @@ export const SocialBar: React.FC = () => {
   return (
     <div className="p-4 border border-ghost flex place-content-around text-2xl">
       {socials.map(({href, label, component}) => (
-        <Link href={href} aria-label={label} key={href}>
+        <Link href={href} className={`!text-fg`} aria-label={label} key={href}>
           {component}
         </Link>))}
     </div>

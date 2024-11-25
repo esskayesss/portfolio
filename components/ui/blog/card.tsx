@@ -23,11 +23,13 @@ export const BlogCard: React.FC<BlogCardProps> = ({thumbnail = true, ...props}) 
       }
       <div className="flex flex-col gap-2">
         <span className={`text-xs text-dim-fg`}>{props.date} · {props.reading_time.minutes} minute read</span>
-        <Link href={`/blog/${props.slug}`}
-              className={`!text-accent-fg font-proto text-lg`}>
-          {props.title} {props.published?null:<span className={`text-bg bg-fg px-4`}>Draft</span>}
-        </Link>
-        <p>{props.description}</p>
+        <div className="data">
+          <Link href={`/blog/${props.slug}`}
+                className={`!text-accent-fg font-proto text-lg`}>
+            {props.title} {props.published?null:<span className={`text-bg bg-fg px-4`}>Draft</span>}
+          </Link>
+          <p>{props.description}</p>
+        </div>
       </div>
     </div>
   )

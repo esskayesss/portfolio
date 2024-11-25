@@ -12,7 +12,7 @@ interface ProjectListEntryProps {
 
 export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: body, ...props}) => {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col">
       <div className="flex justify-between items-center">
         <span>{props.title}</span>
         <div className="flex gap-1">
@@ -21,7 +21,7 @@ export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: bod
               <TagLink title={props.website?'':props.github} href={'https://github.com/' + props.github} />}
         </div>
       </div>
-      <div className="text-dim-fg">
+      <div className="text-dim-fg text-sm">
         {body}
         {props.blog ?
           <Link href={`/blog/${props.blog}`}

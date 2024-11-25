@@ -12,8 +12,6 @@ export async function generateStaticParams() {
 export default async function BlogView({params}: {params: Promise<{slug: string}>}) {
   const slug = (await params).slug;
   return (
-    <main className={`pb-28`} id={'blog'}>
       <Blog slug={slug} />
-    </main>
   );
 }
