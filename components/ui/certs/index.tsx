@@ -25,7 +25,7 @@ export const CertListEntry: React.FC<CertListEntryProps> = ({children: body, ...
           <span className={'text-xl'}>{icons_map[props.issuer]}</span>
         </div>
       </div>
-      <div className={'text-sm text-dim-fg'}>{body}</div>
+      <p className={'text-sm text-dim-fg'}>{body}</p>
     </div>
   )
 }

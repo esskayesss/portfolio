@@ -14,7 +14,7 @@ export const BlogActions: React.FC<{ slug: string }> = async ({slug}) => {
 
   return (
     <div
-      className={`fixed bottom-0 h-14 bg-bg w-screen left-0 flex justify-between px-12 py-12 border-t border-ghost items-center z-10`}>
+      className={`print:hidden fixed bottom-0 h-14 bg-bg w-screen left-0 flex justify-between px-12 py-12 border-t border-ghost items-center z-10`}>
       <div className="relative flex justify-between w-full max-w-6xl mx-auto">
         <div className="left flex items-center gap-8 *:text-3xl *:cursor-pointer">
           <PiWaveformDuotone className={`disabled`}/>

@@ -21,7 +21,7 @@ export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: bod
               <TagLink title={props.website?'':props.github} href={'https://github.com/' + props.github} />}
         </div>
       </div>
-      <div className="text-dim-fg text-sm">
+      <p className="text-dim-fg text-sm leading-snug">
         {body}
         {props.blog ?
           <Link href={`/blog/${props.blog}`}
@@ -29,7 +29,7 @@ export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: bod
             Read the full writeup here.
           </Link>
           : null}
-      </div>
+      </p>
     </div>
   );
 }

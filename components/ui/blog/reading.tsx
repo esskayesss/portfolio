@@ -104,7 +104,7 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
       <div className={`${className} overlay fixed z-40 backdrop-blur-sm w-screen h-screen left-0 bottom-[6.1rem]`}
            onClick={onClick}></div>
       <div
-        className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg absolute mb-12 -left-5 bottom-full z-50 pb-4 w-[356px] max-w-[95vw] max-h-[85dvh] border border-accent-fg *:px-4 *:py-2 overflow-y-scroll`}>
+        className={`${className} toc flex flex-col gap-2 font-proto text-2xl bg-bg absolute mb-12 -left-5 bottom-full z-50 pb-4 w-[356px] max-w-[90vw] max-h-[85dvh] border border-accent-fg *:px-4 *:py-2 overflow-y-scroll`}>
         <span className={`sticky text-lg py-4 bg-dim-bg border-b mb-4`}>READING FORMAT</span>
         <div className="flex flex-col gap-4">
           <div className="flex gap-4 items-center">
