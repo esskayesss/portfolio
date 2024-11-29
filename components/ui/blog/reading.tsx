@@ -3,6 +3,7 @@
 import React, {useEffect, useRef} from "react";
 import {IoCloseOutline} from "react-icons/io5";
 import {PiBookOpenText, PiMinus, PiPlus} from "react-icons/pi";
+import {getItemFromLocalStorage} from "@/lib";
 
 const FONT_SIZE_LIMITS = {
   min: 9,
@@ -61,27 +62,12 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
     return Math.min(Math.max(size, FONT_SIZE_LIMITS.min), FONT_SIZE_LIMITS.max);
   };
 
-  const [rootFontSize, setRootFontSize] = React.useState(() =>
-    parseInt(localStorage.getItem('blog-font-size') || '10')
-  );
-  const [fontStyle, setFontStyle] = React.useState(() =>
-    parseInt(localStorage.getItem('blog-font-style') || '0')
-  );
+  const [rootFontSize, setRootFontSize] = React.useState(10);
+  const [fontStyle, setFontStyle] = React.useState(0);
 
   useEffect(() => {
-    const stored_size = localStorage.getItem('blog-font-size');
-    if (!stored_size) {
-      localStorage.setItem('blog-font-size', '10');
-    } else {
-      setRootFontSize(parseInt(stored_size));
-    }
-
-    const stored_style = localStorage.getItem('blog-font-style');
-    if (!stored_style) {
-      localStorage.setItem('blog-font-style', '0');
-    } else {
-      setFontStyle(parseInt(stored_style));
-    }
+    setRootFontSize(parseInt(getItemFromLocalStorage('blog-font-size', '10')));
+    setFontStyle(parseInt(getItemFromLocalStorage('blog-font-style', '0')));
   }, []);
 
   useEffect(() => {
