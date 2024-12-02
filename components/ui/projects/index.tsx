@@ -21,7 +21,7 @@ export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: bod
               <TagLink title={props.website?'':props.github} href={'https://github.com/' + props.github} />}
         </div>
       </div>
-      <p className="text-dim-fg text-sm leading-snug">
+      <p className="text-dim-fg leading-snug">
         {body}
         {props.blog ?
           <Link href={`/blog/${props.blog}`}
