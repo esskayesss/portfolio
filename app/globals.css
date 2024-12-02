@@ -27,9 +27,8 @@
 }
 
 * {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 7rem;
     scroll-behavior: smooth;
-    /*@apply overflow-x-hidden;*/
 }
 
 *::selection {
