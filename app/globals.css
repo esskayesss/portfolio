@@ -151,7 +151,7 @@ table {
 }
 
 .btn {
-    @apply flex gap-2.5 px-4 py-1 items-center bg-fg text-bg text-base whitespace-nowrap;
+    @apply transition-all duration-500 flex gap-2.5 px-4 py-1 items-center bg-fg text-bg text-base whitespace-nowrap hover:bg-accent-fg;
 }
 
 .tag {

@@ -31,7 +31,7 @@ export const BlogActions: React.FC<{ slug: string }> = async ({slug}) => {
           <FormatButton />
         </div>
         <div className="right flex gap-8 items-center *:text-3xl">
-          <Link href="/support"
+          <Link target={`_blank`} href="https://github.com/sponsors/esskayesss"
                 className="no-underline border border-yellow-fg text-yellow-fg flex gap-2 items-center px-2 py-1 !text-base font-proto">
             <PiCoin className={`text-xl`}/>
           </Link>

@@ -3,6 +3,18 @@ import Image from "next/image";
 import {SiGithubsponsors} from "react-icons/si";
 import {notFound} from "next/navigation";
 
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+  title: "support esskayesss.",
+  description: "Support esskayesss by sponsoring him on Github or subscribing on 𝕏.",
+  keywords: [
+    "Saurabh",  "Saurabh Sharma", "esskayesss", "esskayesss_",
+    "SWE", "Portfolio", "Projects", "Technical Blog", "Programming",
+  ],
+  metadataBase: new URL("https://esskayesss.dev/support"),
+};
+
 export default function Support() {
   if(process.env.NODE_ENV === 'production'){
     notFound();
