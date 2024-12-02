@@ -107,8 +107,9 @@ export interface TOC {
   items: Array<string>;
 }
 
-export const getTOC = async (slug: string): Promise<TOC> => {
+export const getTOC = async (slug: string): Promise<TOC | null> => {
   const path = await globby(`./content/**/${slug}.mdx`);
+  if(path.length === 0) return null;
 
   const contents = readFileSync(path[0], 'utf-8');
   const {data, content: body} = matter(contents);

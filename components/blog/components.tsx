@@ -115,7 +115,7 @@ function BlogImage({...props}) {
              className={`mx-auto`}
       />
       <span className={`w-full px-4 justify-center text-center text-dim-fg text-sm flow-root gap-4 py-4`}>
-        <span className={`px-2 bg-accent-fg text-bg`}>CAPTION:</span> {props["alt"]}
+        <span className={`px-2 bg-accent-fg font-medium text-bg`}>CAPTION:</span> {props["alt"]}
       </span>
     </span>
   )

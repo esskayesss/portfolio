@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`dark-mode`}>
       <body
         className={`relative ${geistSans.variable} ${geistMono.variable} ${protoMono.variable} antialiased`}
       >

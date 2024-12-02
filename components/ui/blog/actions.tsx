@@ -8,9 +8,13 @@ import {TOCButton} from "@/components/ui/blog/toc";
 import {fetchTOC} from "@/app/actions";
 import {CopyToClipboard} from "@/components/ui/clipboard-copy";
 import {FormatButton} from "@/components/ui/blog/reading";
+import {notFound} from "next/navigation";
 
 export const BlogActions: React.FC<{ slug: string }> = async ({slug}) => {
   const toc = await fetchTOC(slug);
+  if(toc === null){
+    notFound()
+  }
 
   return (
     <div

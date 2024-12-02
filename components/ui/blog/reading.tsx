@@ -3,7 +3,7 @@
 import React, {useEffect, useRef} from "react";
 import {IoCloseOutline} from "react-icons/io5";
 import {PiBookOpenText, PiMinus, PiPlus} from "react-icons/pi";
-import {getItemFromLocalStorage} from "@/lib";
+import {useLocalStorage} from "@/lib/hooks";
 
 const FONT_SIZE_LIMITS = {
   min: 9,
@@ -62,13 +62,8 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
     return Math.min(Math.max(size, FONT_SIZE_LIMITS.min), FONT_SIZE_LIMITS.max);
   };
 
-  const [rootFontSize, setRootFontSize] = React.useState(10);
-  const [fontStyle, setFontStyle] = React.useState(0);
-
-  useEffect(() => {
-    setRootFontSize(parseInt(getItemFromLocalStorage('blog-font-size', '10')));
-    setFontStyle(parseInt(getItemFromLocalStorage('blog-font-style', '0')));
-  }, []);
+  const [rootFontSize, setFontSize] = useLocalStorage('blog-font-size', '10');
+  const [fontStyle, setFontStyle] = useLocalStorage('blog-font-style', '1');
 
   useEffect(() => {
     if (fontStyle !== undefined) {
@@ -80,7 +75,7 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
   useEffect(() => {
     if (!rootFontSize) return;
     const clamped_size = clampFontSize(rootFontSize);
-    setRootFontSize(clamped_size);
+    setFontSize(clamped_size);
     document.documentElement.style.setProperty('font-size', `${clamped_size}px`);
     localStorage.setItem('blog-font-size', clamped_size.toString());
   }, [rootFontSize]);
@@ -97,10 +92,10 @@ const Reading: React.FC<ShareProps> = ({onClick, className}) => {
             <span className={`cursor-pointer flex gap-2 text-base`}>Font Size: </span>
             <span className={`flex border border-ghost *:w-fit *:px-4 items-center`}>
               <PiMinus className={`${rootFontSize <= FONT_SIZE_LIMITS.min ? 'disabled' : ''}`}
-                       onClick={() => setRootFontSize(rootFontSize - 1)}/>
+                       onClick={() => setFontSize(rootFontSize - 1)}/>
               <span className={`text-lg border-x border-ghost px-8`}>{rootFontSize}</span>
               <PiPlus className={`${rootFontSize >= FONT_SIZE_LIMITS.max ? 'disabled' : ''}`}
-                      onClick={() => setRootFontSize(rootFontSize + 1)}/>
+                      onClick={() => setFontSize(rootFontSize + 1)}/>
             </span>
           </div>
           <div className="flex gap-4 items-center">

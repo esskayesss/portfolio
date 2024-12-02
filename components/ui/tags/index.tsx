@@ -63,11 +63,13 @@ export const TagLink: React.FC<TagLinkProps> = ({...props}) => {
   return (
     <Link href={props.href}
           target={external?'_blank':'_self'}
-          className={`!text-fg no-underline flex items-center gap-1 px-1 ${className} ${external?'external':''}`}
+          className={`!text-fg no-underline hover:underline flex items-center gap-1 px-1 ${className} ${external?'external':''} group`}
     >
-      {external?<span className={'text-lg'}>{icon_map[icon]}</span>:null}
+      {external?<span className={'text-lg group-hover:drop-shadow-glow'}>{icon_map[icon]}</span>:null}
       <span>{title}</span>
-      {external?<PiArrowUpRight className={'text-accent-fg'}/>:null}
+      {external?<PiArrowUpRight
+        className={'text-accent-fg group-hover:translate-x-1 group-hover:scale-95 transition-all'}
+      />:null}
     </Link>
   )
 }
