@@ -1,7 +1,7 @@
 import {SupportCard} from "@/components/ui/support-card";
 import Image from "next/image";
 import {SiGithubsponsors} from "react-icons/si";
-import {notFound} from "next/navigation";
+import {redirect} from "next/navigation";
 
 import type {Metadata} from "next";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Support() {
   if(process.env.NODE_ENV === 'production'){
-    notFound();
+    redirect("https://github.com/sponsors/esskayesss");
   }
 
   return (
