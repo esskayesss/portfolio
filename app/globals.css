@@ -26,6 +26,30 @@
     }
 }
 
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.hazard-bg {
+    background: repeating-linear-gradient(
+            55deg,
+            #060914,
+            #060914 20px,
+            #ffb101 20px,
+            #ffb101 40px
+    );
+}
+
+#construction-text::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full skew-x-[40deg] -z-[1];
+    background-color: #ffb101;
+}
+
 * {
     scroll-margin-top: 7rem;
     scroll-behavior: smooth;
@@ -160,6 +184,26 @@ table {
 
 .x-scroll-container {
     @apply w-full overflow-x-auto;
+}
+
+label {
+    @apply flex flex-col items-start w-full;
+
+    span {
+        @apply text-sm text-dim-fg;
+    }
+
+    div {
+        @apply has-[:focus]:border-accent-fg border-ghost border-b pb-1 w-full flex gap-4;
+    }
+
+    select {
+        @apply bg-green-bg focus:outline-none px-4;
+    }
+
+    input {
+        @apply bg-bg focus:outline-none w-full placeholder-ghost placeholder:text-base;
+    }
 }
 
 /* hljs yorumi theme */

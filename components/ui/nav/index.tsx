@@ -44,9 +44,9 @@ const NavigationMenu: React.FC<{
           }
           <Link href={'/resume'} className={'hover:bg-ghost'} onClick={onClick}>resume <GrDocumentPdf
             className={`text-lg`}/> </Link>
-          <Link target={`_blank`} href={'/support'}
-                className={`bg-yellow-bg text-yellow-fg`}
-                onClick={onClick}>support me</Link>
+          <Link href={'/support'} className={`bg-yellow-bg text-yellow-fg`} onClick={onClick}>
+            support me
+          </Link>
         </nav>
       </div>
     </>
