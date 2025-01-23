@@ -1,6 +1,6 @@
 import {BlogCard} from "@/components/ui/blog/card";
 import Link from "next/link";
-import {getBlogPosts} from "@/lib/blog";
+import {getAllBlogPosts} from "@/lib/blog";
 
 import type {Metadata} from "next";
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogHome() {
-  const articles = await getBlogPosts();
+  const articles = await getAllBlogPosts();
 
   return (
     <main>

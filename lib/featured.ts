@@ -1,4 +1,4 @@
-import {BlogBrief, getXBlogPosts} from "@/lib/blog";
+import {PostMetadata, getXBlogPosts} from "@/lib/blog";
 import {ProjectMetadata} from "@/lib/types";
 
 const projects_titles: Array<string> = [
@@ -6,4 +6,4 @@ const projects_titles: Array<string> = [
 ];
 
 const projects: Array<ProjectMetadata> = []
-export const blogs: Array<BlogBrief> = await getXBlogPosts(3);
+export const blogs: Array<PostMetadata> = await getXBlogPosts(3);

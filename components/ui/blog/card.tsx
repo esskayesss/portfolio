@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {BlogBrief} from "@/lib/blog";
+import {PostMetadata} from "@/lib/blog";
 
-interface BlogCardProps extends BlogBrief {
+interface BlogCardProps extends PostMetadata {
   thumbnail?: boolean
 }
 

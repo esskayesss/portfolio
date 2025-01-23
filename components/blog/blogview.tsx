@@ -1,5 +1,5 @@
 import React from "react";
-import {BlogPost, getBlogPost} from "@/lib/blog";
+import {Post, getBlogPost} from "@/lib/blog";
 import {notFound} from "next/navigation";
 import {MDXRemote} from "next-mdx-remote/rsc";
 import components from "@/components/blog/components";
@@ -12,7 +12,7 @@ const BlogMDX = ({source}: {source: string}) => {
 }
 
 export const Blog: React.FC<{slug: string}> = async ({slug}: {slug: string}) => {
-  const contents: BlogPost | null = await getBlogPost(slug);
+  const contents: Post | null = await getBlogPost(slug);
   if(!contents || (!contents.published && process.env.NODE_ENV === 'production')){
     notFound()
   }

@@ -1,9 +1,9 @@
 // app/blog/archive/page.tsx
 import {BlogCard} from "@/components/ui/blog/card";
-import {getBlogPosts} from "@/lib/blog";
+import {getAllBlogPosts} from "@/lib/blog";
 
 export default async function BlogHome() {
-  const articles = await getBlogPosts();
+  const articles = await getAllBlogPosts();
 
   return (
     <main>
