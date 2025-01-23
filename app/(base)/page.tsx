@@ -4,11 +4,12 @@ import Link from "next/link";
 import { HomepageExperienceSection } from "@/components/homepage/experience";
 import {ProjectListEntry} from "@/components/ui/projects";
 import {BlogCard} from "@/components/ui/blog/card";
-import { getXBlogPosts } from "@/lib/blogs";
+import { getAllBlogPosts, getLatestBlogSlugs } from "@/lib/blogs";
 import { featured_projects } from "@/lib/projects";
 
 export default async function Home() {
-  const latest_articles = await getXBlogPosts(2);
+  const latest_articles = (await getLatestBlogSlugs()).slice(0, 3);
+  const allBlogs = (await getAllBlogPosts())
 
   return (
     <main>
@@ -54,8 +55,9 @@ export default async function Home() {
         </div>
         <div className="content">
           {latest_articles.length === 0 && <p>No articles yet.</p>}
-          {latest_articles.map((article, _idx) => {
-            return <BlogCard thumbnail={false} key={_idx} {...article} />
+          {latest_articles.map((slug, _idx) => {
+            const blog = allBlogs[slug]
+            return <BlogCard thumbnail={false} key={_idx} {...blog} />
           })}
         </div>
       </div>

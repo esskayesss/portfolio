@@ -1,14 +1,11 @@
 import {getAllBlogPosts} from "@/lib/blogs";
 
 export const sitemap = async () => {
-  const blogs = getAllBlogPosts().then(res => res.map(
-    (post) => (
-      {
-        url: `https://esskayesss.dev/blog/${post.slug}`,
-        lastModified: new Date(post.date).toISOString().split('T')[0],
-      }
-    )
-  ));
+  const posts = await getAllBlogPosts()
+  const blogs = Object.entries(posts).map(([slug, post]) => ({
+    url: `https://esskayesss.dev/blog/${slug}`,
+    lastModified: new Date(post.metadata.date).toISOString().split('T')[0],
+  }))
   const routes = ["", "/blog", "/blog/archive", "/support", "/projects"].map(
     (route) => ({
       url: `https://esskayesss.dev${route}`,
@@ -16,10 +13,7 @@ export const sitemap = async () => {
     })
   );
 
-  return [
-    ...routes,
-    ...(await blogs),
-  ]
+  return [ ...routes, ...blogs ]
 }
 
 export default sitemap

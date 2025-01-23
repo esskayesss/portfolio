@@ -1,12 +1,9 @@
 import {Blog} from "@/components/blog/blogview";
-import {globby} from "globby";
+import { getLatestBlogSlugs } from "@/lib/blogs";
 
 export async function generateStaticParams() {
-  const paths = await globby(`./content/**/*.mdx`);
-
-  return paths.map((path) => ({
-    slug: path.split('/').pop()?.replace('.mdx', ''),
-  }))
+  const slugs = await getLatestBlogSlugs()
+  return slugs.map((slug) => ({slug: slug}))
 }
 
 export default async function BlogView({params}: {params: Promise<{slug: string}>}) {

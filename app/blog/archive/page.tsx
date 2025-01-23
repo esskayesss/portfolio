@@ -1,10 +1,10 @@
 // app/blog/archive/page.tsx
 import {BlogCard} from "@/components/ui/blog/card";
-import {getAllBlogPosts} from "@/lib/blogs";
+import {getLatestBlogSlugs, getAllBlogPosts} from "@/lib/blogs";
 
 export default async function BlogHome() {
-  const articles = await getAllBlogPosts();
-
+  const sortedSlugs = await getLatestBlogSlugs()
+  const allBlogs = await getAllBlogPosts()
   return (
     <main>
       <div className={'section'}>
@@ -12,9 +12,9 @@ export default async function BlogHome() {
           <h1>Blog Archive</h1>
         </div>
         <div className="content">
-          {articles.length === 0 && <p>I'm just a chill guy.</p>}
-          {articles.map((article, _idx) => (
-            <BlogCard key={_idx} thumbnail={false} {...article} />
+          {sortedSlugs.length === 0 && <p>I'm just a chill guy.</p>}
+          {sortedSlugs.map((slug, _idx) => (
+            <BlogCard key={_idx} thumbnail={false} {...allBlogs[slug]} />
           ))}
         </div>
       </div>

@@ -1,16 +1,14 @@
 import {readFileSync} from "fs";
-import {globby} from "globby";
 import matter from "gray-matter";
 import {remark} from "remark";
 import remarkMdx from "remark-mdx";
 import {visit} from "unist-util-visit";
 
-
 export interface PostMetadata {
   title: string;
   description: string;
   date: string;
-  slug: string;
+  path: string;
   tags: Array<string>;
   type: 'tutorial' | 'project' | 'article' | 'diary';
   collection?: string | undefined;
@@ -22,8 +20,10 @@ export interface PostMetadata {
   }
 }
 
-export interface Post extends PostMetadata{
+export interface Post {
+  slug: string;
   body: string;
+  metadata: PostMetadata;
   next_slug: string | undefined;
   prev_slug: string | undefined;
 }
@@ -33,13 +33,7 @@ export interface TOC {
   items: Array<string>;
 }
 
-export const getTOC = async (slug: string): Promise<TOC | null> => {
-  const path = await globby(`./content/**/${slug}.mdx`);
-  if(path.length === 0) return null;
-
-  const contents = readFileSync(path[0], 'utf-8');
-  const {data, content: body} = matter(contents);
-
+export const getTOC = async (title: string, body: string): Promise<TOC | null> => {
   const headings: Array<string> = [];
   await remark()
     .use(remarkMdx)
@@ -51,7 +45,7 @@ export const getTOC = async (slug: string): Promise<TOC | null> => {
     .process(body);
 
   return {
-    title: data.title,
+    title: title,
     items: headings
   }
 }
@@ -66,9 +60,8 @@ function calculateReadingTime(content: string): {
     .split(/\s+/)
     .filter(word => word.length > 0);
   const wordCount = words.length;
-  const wordsPerMinute = 60; // Average reading speed
+  const wordsPerMinute = 60;
 
-  // Calculate total minutes as a float
   const minutes = Math.floor(wordCount / wordsPerMinute);
   return {
     minutes,
@@ -78,22 +71,35 @@ function calculateReadingTime(content: string): {
 
 export const parsePost = (path: string): Post => {
   const contents = readFileSync(path, 'utf-8');
-  const slug = path.split('/').pop()?.replace('.mdx', '') ?? 'unknown-slug';
+  const regex = /\/content\/blog\/(?:([^\/]+)\/)?([^\/]+)\.mdx$/;
+  const match = path.match(regex)
+  
+  if (!match) {
+    throw new Error(`Invalid path format: ${path}`);
+  }
+
+  const [, collection, slug] = match;
   const {data, content: body} = matter(contents);
-  return {
+
+  const metadata: PostMetadata = {
     title: data.title,
     description: data.description,
+    path: path,
     date: data.date.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'}),
     tags: data.tags,
-    slug: slug,
     type: data.type,
-    collection: data.collection,
+    collection: collection,
     published: data.published === undefined ? true : data.published,
-    body: body,
     cover_image: data.cover,
     reading_time: calculateReadingTime(body),
+  }
+
+  return {
+    slug: slug,
+    body: body,
+    metadata: metadata,
     next_slug: data.next,
-    prev_slug: data.prev
+    prev_slug: data.prev,
   }
 }
 

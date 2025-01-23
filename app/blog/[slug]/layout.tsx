@@ -1,20 +1,20 @@
 import React from "react";
 import type { Metadata } from 'next'
 import {BlogActions} from "@/components/ui/blog/actions";
-import { getBlogPost } from "@/lib/blogs";
+import { getBlogBySlug } from "@/lib/blogs";
 import {notFound} from "next/navigation";
 
 export async function generateMetadata(
   {params}: {params: Promise<{ slug: string }>}
 ): Promise<Metadata> {
   const slug = (await params).slug
-  const blog = await getBlogPost(slug)
+  const blog = await getBlogBySlug(slug)
   if(!blog) notFound()
 
   return {
-    title: blog.title,
-    description: blog.description,
-    keywords: blog.tags,
+    title: blog.metadata.title,
+    description: blog.metadata.description,
+    keywords: blog.metadata.tags,
     openGraph: {
       images: [`/opengraph/${slug}.png`]
     }
