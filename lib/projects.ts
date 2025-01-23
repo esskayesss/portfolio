@@ -18,7 +18,7 @@ export const projects: Array<ProjectMetadata> = [
   {
     title: 'b64ed',
     description: 'b64ed is a simple base64 encoder/decoder written from scratch in C.',
-    blog: undefined,
+    blog: 'realtime-chat-app',
     website: undefined,
     github: 'esskayesss/b64ed'
   }

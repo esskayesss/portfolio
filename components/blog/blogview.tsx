@@ -34,7 +34,7 @@ export const Blog: React.FC<{slug: string}> = async ({slug}) => {
         {contents.metadata.cover_image?
           <Image src={`/static/blog/${contents.slug}/cover.webp`} alt={''}
                  width={1000} height={1000}
-                 className={`bg-blend-color-lighten`}
+                 className={`mix-blend-lighten`}
                  style={{width: "100%", height: "auto"}}
           />:null
         }

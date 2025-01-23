@@ -1,3 +1,5 @@
+'use server'
+
 import { globby } from "globby";
 import { parsePost, Post } from "./posts";
 
@@ -10,9 +12,9 @@ export const getAllBlogPosts = async (): Promise<Record<string, Post>> => {
   const paths = await globby(`./content/blog/**/*.mdx`);
   var blogs: Record<string, Post> = {}
 
-  paths.forEach((path) => {
-    const post = parsePost(path);
-    if (post.metadata.published === false && process.env.NODE_ENV === 'production') return;
+  for (const path of paths) {
+    const post = await parsePost(path);
+    if (post.metadata.published === false && process.env.NODE_ENV === 'production') continue;
 
     var slug = post.slug;
     var collection = post.metadata.collection;
@@ -23,7 +25,7 @@ export const getAllBlogPosts = async (): Promise<Record<string, Post>> => {
     }
 
     blogs[slug] = post;
-  });
+  }
 
   allBlogs = blogs
   return allBlogs;

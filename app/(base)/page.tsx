@@ -36,7 +36,7 @@ export default async function Home() {
         </div>
         <div className={'content'}>
           {featured_projects.slice(0, 3).map((entry, index) => {
-            return <ProjectListEntry key={index} title={entry.title} github={entry.github} website={entry.website}>
+            return <ProjectListEntry key={index} {...entry}>
               {entry.description} 
             </ProjectListEntry>
           })} 
@@ -57,7 +57,7 @@ export default async function Home() {
           {latest_articles.length === 0 && <p>No articles yet.</p>}
           {latest_articles.map((slug, _idx) => {
             const blog = allBlogs[slug]
-            return <BlogCard thumbnail={false} key={_idx} {...blog} />
+            return <BlogCard key={_idx} {...blog} />
           })}
         </div>
       </div>

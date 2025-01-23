@@ -25,9 +25,7 @@ export const ProjectListEntry: React.FC<ProjectListEntryProps> = ({children: bod
         {body}
         {props.blog ?
           <Link href={`/blog/${props.blog}`}
-                className={'animate mx-2 text-blue-fg hover:underline'}>
-            Read the full writeup here.
-          </Link>
+                className={'animate mx-2 text-blue-fg hover:underline'}>Read the full writeup here.</Link>
           : null}
       </p>
     </div>

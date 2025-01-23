@@ -9,16 +9,17 @@ interface BlogCardProps extends Post {
 
 export const BlogCard: React.FC<BlogCardProps> = ({thumbnail = true, ...props}) => {
   if(thumbnail){
-    thumbnail = props.metadata.cover_image !== undefined;
+    thumbnail = props.metadata.cover_image || false;
   }
+
   return (
     <div className="flex flex-col gap-2 border border-ghost p-4">
       {thumbnail?
         <Image src={'/static/blog/' + props.slug + '/cover.webp'}
                alt={'support'}
                width={1000} height={1000}
-               style={{width: '100%', height: 'auto', objectFit: 'cover'}}
-               className={`bg-blend-color-lighten aspect-[24/9]`}
+               style={{width: '100%', height: 'auto', objectFit: 'contain'}}
+               className={`mix-blend-lighten aspect-[24/9]`}
         />:null
       }
       <div className="flex flex-col gap-2">
