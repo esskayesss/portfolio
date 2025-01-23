@@ -57,7 +57,7 @@ export const getTOC = async (slug: string): Promise<TOC | null> => {
 }
 
 
-export function calculateReadingTime(content: string): {
+function calculateReadingTime(content: string): {
   minutes: number;
   words: number;
 } {
@@ -76,7 +76,7 @@ export function calculateReadingTime(content: string): {
   };
 }
 
-const parsePost = (path: string): Post => {
+export const parsePost = (path: string): Post => {
   const contents = readFileSync(path, 'utf-8');
   const slug = path.split('/').pop()?.replace('.mdx', '') ?? 'unknown-slug';
   const {data, content: body} = matter(contents);
@@ -97,29 +97,3 @@ const parsePost = (path: string): Post => {
   }
 }
 
-let postsMetadata: Array<PostMetadata> | undefined = undefined;
-
-export const getAllBlogPosts = async (): Promise<Array<PostMetadata>> => {
-  if(postsMetadata) return postsMetadata;
-
-  const paths = await globby(`./content/**/*.mdx`);
-  const blogs: Array<PostMetadata> = []
-  paths.forEach((path) => {
-    const post = parsePost(path)
-    if (post.published === false && process.env.NODE_ENV === 'production') return;
-    blogs.push(post as PostMetadata)
-  });
-  postsMetadata = blogs.sort((a, b) => { return new Date(b.date).getTime() - new Date(a.date).getTime() });
-  return postsMetadata
-}
-
-export const getXBlogPosts = async (x: number): Promise<Array<PostMetadata>> => {
-  return getAllBlogPosts().then((posts) => posts.slice(0, x))
-}
-
-export const getBlogPost = async (slug: string): Promise<Post | null> => {
-  const path = await globby(`./content/**/${slug}.mdx`);
-  if(path.length === 0) return null;
-
-  return parsePost(path[0])
-}

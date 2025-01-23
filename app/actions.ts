@@ -1,6 +1,6 @@
 'use server';
+import { getTOC } from "@/lib/posts";
 
 export async function fetchTOC(slug: string) {
-  const {getTOC} = await import('@/lib/blog');
   return await getTOC(slug);
 }

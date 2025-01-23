@@ -1,6 +1,6 @@
 import {BlogCard} from "@/components/ui/blog/card";
 import Link from "next/link";
-import {getAllBlogPosts} from "@/lib/blog";
+import {getAllBlogPosts} from "@/lib/blogs";
 
 import type {Metadata} from "next";
 

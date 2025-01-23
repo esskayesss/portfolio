@@ -1,10 +1,11 @@
 import { SocialBar } from "@/components/social-bar";
-import {CertListEntry} from "@/components/ui/certs";
+import { CertListEntry } from "@/components/ui/certs";
 import Link from "next/link";
-import {HomepageExperienceSection} from "@/components/homepage/experience";
+import { HomepageExperienceSection } from "@/components/homepage/experience";
 import {ProjectListEntry} from "@/components/ui/projects";
-import {getXBlogPosts} from "@/lib/blog";
 import {BlogCard} from "@/components/ui/blog/card";
+import { getXBlogPosts } from "@/lib/blogs";
+import { featured_projects } from "@/lib/projects";
 
 export default async function Home() {
   const latest_articles = await getXBlogPosts(2);
@@ -33,18 +34,11 @@ export default async function Home() {
           <Link href={'/projects'}>See All</Link>
         </div>
         <div className={'content'}>
-          <ProjectListEntry
-            title={'b64ed'}
-            github={'esskayesss/b64ed'}
-          >
-            A simple base64 encoder and decoder implemented from scratch in c.
-          </ProjectListEntry>
-          <ProjectListEntry
-            title={'clishae'}
-            github={'esskayesss/clishae'}
-          >
-            CLIshae is a cURL-focussed multi-threaded pastebin server written from scratch in C. It has a complete implementation of HTTP/1.1 and uses system calls and low-level kernel calls.
-          </ProjectListEntry>
+          {featured_projects.slice(0, 3).map((entry, index) => {
+            return <ProjectListEntry key={index} title={entry.title} github={entry.github} website={entry.website}>
+              {entry.description} 
+            </ProjectListEntry>
+          })} 
         </div>
       </div>
 

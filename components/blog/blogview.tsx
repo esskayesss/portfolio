@@ -1,5 +1,6 @@
 import React from "react";
-import {Post, getBlogPost} from "@/lib/blog";
+import { Post } from "@/lib/posts";
+import {getBlogPost} from "@/lib/blogs";
 import {notFound} from "next/navigation";
 import {MDXRemote} from "next-mdx-remote/rsc";
 import components from "@/components/blog/components";

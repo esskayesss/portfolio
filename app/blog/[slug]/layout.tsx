@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from 'next'
 import {BlogActions} from "@/components/ui/blog/actions";
-import {getBlogPost} from "@/lib/blog";
+import { getBlogPost } from "@/lib/blogs";
 import {notFound} from "next/navigation";
 
 export async function generateMetadata(

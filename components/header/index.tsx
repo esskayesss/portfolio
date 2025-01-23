@@ -7,9 +7,6 @@ import Link from "next/link";
 export const Header: React.FC<{blog?: boolean}> = ({blog = false}) => {
   return (
     <>
-      <div className="h-8 print:hidden w-full hazard-bg max-w-6xl mx-auto flex justify-center items-center">
-        <div className="relative text-bg construction-text z-10 px-4" id={"construction-text"}>under construction</div>
-      </div>
       <header
         className="print:mt-8 pt-8 flex shadow-bg shadow-lg justify-between w-full z-10 sticky py-4 top-0 left-0 z-9 bg-bg max-w-6xl mx-auto">
       <Link href={`/${blog?'blog':''}`} className="flex font-proto text-xl items-center gap-2 no-underline">

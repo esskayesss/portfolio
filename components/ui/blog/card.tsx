@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {PostMetadata} from "@/lib/blog";
+import {PostMetadata} from "@/lib/posts";
 
 interface BlogCardProps extends PostMetadata {
   thumbnail?: boolean
@@ -22,7 +22,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({thumbnail = true, ...props}) 
         />:null
       }
       <div className="flex flex-col gap-2">
-        <span className={`text-xs text-dim-fg`}>{props.date} · {props.reading_time.minutes} minute read</span>
+        <div className="flex flex-wrap gap-x-4 gap-y-0 text-xs">
+          <span className={`text-dim-fg`}>{props.date} · {props.reading_time.minutes} minute read</span>
+          {props.collection? <span className={'font-proto w-fit border border-yellow-fg px-1'}>{props.collection}</span> : null}
+        </div>
         <div className="data">
           <Link href={`/blog/${props.slug}`}
                 className={`!text-accent-fg font-proto text-lg`}>

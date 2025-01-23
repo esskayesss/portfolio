@@ -1,4 +1,4 @@
-import {getAllBlogPosts} from "@/lib/blog";
+import {getAllBlogPosts} from "@/lib/blogs";
 
 export const sitemap = async () => {
   const blogs = getAllBlogPosts().then(res => res.map(
