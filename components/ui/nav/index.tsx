@@ -11,7 +11,6 @@ const nav_links = [
   {title: 'home', href: '/'},
   {title: 'projects', href: '/projects'},
   {title: 'blog', href: '/blog'},
-  {title: 'curations', href: '/curations'},
 ]
 
 const NavigationMenu: React.FC<{

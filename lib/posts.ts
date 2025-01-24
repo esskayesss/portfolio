@@ -13,7 +13,7 @@ export interface PostMetadata {
   date: string;
   path: string;
   tags: Array<string>;
-  type: 'tutorial' | 'project' | 'article' | 'diary';
+  type: 'tutorial' | 'project' | 'article' | 'diary' | 'worklog';
   collection?: string | undefined;
   published?: boolean | undefined;
   cover_image?: boolean;
