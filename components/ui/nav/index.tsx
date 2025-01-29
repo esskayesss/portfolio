@@ -41,8 +41,8 @@ const NavigationMenu: React.FC<{
               );
             })
           }
-          <Link href={'/resume.pdf'} className={'hover:bg-ghost'} onClick={onClick}>resume <GrDocumentPdf
-            className={`text-lg`}/> </Link>
+          <a href={'/resume.pdf'} className={'hover:bg-ghost'} onClick={onClick}>resume <GrDocumentPdf
+            className={`text-lg`}/> </a>
           <Link href={'/support'} className={`bg-yellow-bg text-yellow-fg`} onClick={onClick}>
             support me
           </Link>

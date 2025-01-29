@@ -161,7 +161,7 @@ table {
         }
 
         a {
-            @apply text-blue-fg animate no-underline hover:underline underline-offset-2;
+            @apply text-cyan-fg animate no-underline hover:underline underline-offset-2;
         }
     }
 }

@@ -9,11 +9,11 @@ export const Footer: React.FC = () => {
       <div className="flex justify-center lg:justify-between w-full max-w-6xl mx-auto text-xs text-dim-fg mt-8">
         <Link href={`https://x.com/esskayesss_`}
               className={`hidden lg:flex items-center gap-2`}><PiXLogo /> @esskayesss_</Link>
-        <span className={`flex gap-3`}>
+        <span className={`flex gap-3 items-center`}>
           character permutations, assembled in
-          <Image width={18} height={16}
-                 src={'/india.webp'} alt={`gm sars.`}
-                 style={{opacity: "0.8"}}
+          <Image  width={18} height={16}
+                  src={'/india.webp'} alt={`gm sars.`}
+            style={{opacity: "0.8", height: '16px', width: 'auto'}}
           />
         </span>
       </div>

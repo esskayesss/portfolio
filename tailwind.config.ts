@@ -51,6 +51,11 @@ export default {
           bg: "#4C1036",
           fg: "#BB5D7D",
         },
+
+        cyan: {
+          fg: "#85E0CB",
+          bg: "#104351"
+        }
       },
       fontFamily: {
         sans: "var(--font-geist-sans)",
