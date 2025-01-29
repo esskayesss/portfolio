@@ -139,7 +139,7 @@ function Header({children, ...props}) {
   const last_word = children.split(' ').pop();
   children = children.split(' ').slice(0, -1).join(' ') + ' '
   return (
-    <h1 id={id} {...props} className={`${props['className']} flex flex-wrap items-center gap-2`}>
+    <h1 id={id} {...props} className={`${props['className']} flex flex-wrap items-center gap-2 mt-12`}>
       <span>
       {children}
         <span className={`whitespace-nowrap`}>
@@ -153,10 +153,20 @@ function Header({children, ...props}) {
   );
 }
 
+// @ts-ignore
+function Youtube({...props}) {
+  return (
+    <iframe id="ytplayer" width="640" height="360" className='aspect-4/3 w-full' allow="autoplay; picture-in-picture"
+      src={`https:\/\/www.youtube.com\/embed\/${props.id}?color=white&mute=1&showinfo=0&modestbranding=1&origin=http:\/\/esskayesss.dev`} >
+      </iframe>
+  )
+}
+
 export default {
   h1: Header,
   code: Code,
   img: BlogImage,
   a: Anchor,
-  Table
+  Table,
+  Youtube
 } as MDXComponents

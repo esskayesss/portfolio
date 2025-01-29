@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
               className={`hidden lg:flex items-center gap-2`}><PiXLogo /> @esskayesss_</Link>
         <span className={`flex gap-3`}>
           character permutations, assembled in
-          <Image width={16} height={16}
+          <Image width={18} height={16}
                  src={'/india.webp'} alt={`gm sars.`}
                  style={{opacity: "0.8"}}
           />

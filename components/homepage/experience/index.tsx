@@ -17,10 +17,10 @@ export const HomepageExperienceSection: React.FC = () => {
         location={'Remote'}>
       </ExpListEntry>
       <div 
-        className={`flex items-center gap-1 py-2 text-xs text-dim-fg *:transition-all duration-300
+        className={`flex items-center gap-1 py-2 text-xs text-dim-fg *:transition-all *:duration-500
           cursor-pointer select-none transition-all *:animate text-fg ${isExpanded?'*:text-accent-fg':''}`}
         onClick={() => setIsExpanded(!isExpanded)}>
-        <IoMdArrowDropdown className={`${isExpanded?'-rotate-180':''}`}/>
+        <IoMdArrowDropdown className={`${isExpanded?'-scale-100':''}`}/>
         <span>{isExpanded?'Hide':'Show'} Previous Roles</span>
       </div>
       <div className={`flex flex-col gap-2 animate ${isExpanded?'':'hidden'}`}>

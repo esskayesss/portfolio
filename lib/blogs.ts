@@ -7,7 +7,7 @@ var allBlogs: Record<string, Post> | null = null
 var sortedSlugs: Array<string> | null = null
 
 export const getAllBlogPosts = async (): Promise<Record<string, Post>> => {
-  if (allBlogs !== null) return allBlogs;
+  if (process.env.NODE_ENV === 'production' && allBlogs !== null) return allBlogs;
 
   const paths = await globby(`./content/blog/**/*.mdx`);
   var blogs: Record<string, Post> = {}

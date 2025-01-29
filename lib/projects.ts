@@ -5,7 +5,7 @@ export const projects: Array<ProjectMetadata> = [
     title: 'whatcook?',
     description: 'whatCook is your personal AI-Powered kitchen assistant designed to make meal planning effortless. The app helps you discver recipes based on the ingredients you already have at home— all you need to do, is snap a picture of your groceries and let WhatCook work its magic.',
     blog: undefined,
-    website: 'https://whatcook.vercel.app',
+    website: 'https://whatcook.esskayesss.dev',
     github: 'esskayesss/whatcook'
   },
   {
@@ -21,6 +21,13 @@ export const projects: Array<ProjectMetadata> = [
     blog: undefined,
     website: undefined,
     github: 'esskayesss/b64ed'
+  },
+  {
+    title: 'yorumi',
+    description: 'calming deep sea colorscheme for developers with 125 stars on github.',
+    blog: undefined,
+    website: 'https://yorumicolors.cc',
+    github: 'yorumicolors/yorumi.nvim'
   }
 ]
 
