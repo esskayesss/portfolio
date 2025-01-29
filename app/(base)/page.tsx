@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="section w-full">
+      <section>
         <div className="heading">
           <h1>Hi! I'm Saurabh Sharma. 👋</h1>
         </div>
@@ -27,9 +27,9 @@ export default async function Home() {
           </p>
           <SocialBar />
         </div>
-      </div>
+      </section>
 
-      <div className="section">
+      <section>
         <div className="heading">
           <h1>Projects</h1>
           <Link href={'/projects'}>See All</Link>
@@ -41,14 +41,14 @@ export default async function Home() {
             </ProjectListEntry>
           })} 
         </div>
-      </div>
+      </section>
 
-      <div className="section">
+      <section>
         <h1>Currently</h1>
         <HomepageExperienceSection />
-      </div>
+      </section>
 
-      <div className="section">
+      <section>
         <div className="heading">
           <h1>latest articles</h1>
           <Link href={'/blog'}>See All</Link>
@@ -60,9 +60,9 @@ export default async function Home() {
             return <BlogCard key={_idx} {...blog} />
           })}
         </div>
-      </div>
+      </section>
 
-      <div className="section">
+      <section>
         <div className="heading">
           <h1>certifications and achievements</h1>
         </div>
@@ -84,7 +84,7 @@ export default async function Home() {
             SIH is a national hackathon organized by AICTE, Innovation Cell of the Ministry of Education.
           </CertListEntry>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

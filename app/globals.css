@@ -142,7 +142,7 @@ table {
 }
 
 
-.section {
+section {
     @apply flex flex-col gap-2.5;
 
     .heading {
