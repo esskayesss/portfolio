@@ -19,7 +19,7 @@ export default async function BlogHome() {
   const blogs = await getAllBlogPosts()
   return (
     <main>
-      <div className={'section'}>
+      <section>
         <div className="heading">
           <h1>Latest Articles</h1>
           <Link href={`/blog/archive`}>See all</Link>
@@ -30,7 +30,7 @@ export default async function BlogHome() {
             <BlogCard key={_idx} {...blogs[slug]} />
           ))}
         </div>
-      </div>
+      </section>
     </main>
   );
 }

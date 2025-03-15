@@ -35,11 +35,13 @@ export default async function Home() {
           <Link href={'/projects'}>See All</Link>
         </div>
         <div className={'content'}>
-          {featured_projects.slice(0, 3).map((entry, index) => {
-            return <ProjectListEntry key={index} {...entry}>
-              {entry.description} 
-            </ProjectListEntry>
-          })} 
+          {
+            featured_projects.slice(0, 3).map((entry, index) => {
+              return <ProjectListEntry key={index} {...entry}>
+                {entry.description} 
+              </ProjectListEntry>
+            }
+          )} 
         </div>
       </section>
 
