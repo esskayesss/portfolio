@@ -15,7 +15,7 @@ export const Header: React.FC<{blog?: boolean}> = ({blog = false}) => {
           <h1>esskayesss</h1>
         </Link>
         {blog && (
-          <Link href="/blog" className='no-underline px-4 py-0.5 bg-dim-bg border border-accent-fg rounded-full text-xs h-fit'>
+          <Link href="/blog" className='no-underline px-4 py-0.5 bg-dim-bg border border-accent-fg rounded-full text-xs h-fit leading-none'>
             BLOG
           </Link>
         )}
