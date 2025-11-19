@@ -19,6 +19,7 @@ export default {
       },
       colors: {
         fg: "#BDBFCB",
+        subtext: "#A7A9B5",
         bg: "#060914",
         ghost: "#343742",
 

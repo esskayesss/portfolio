@@ -186,6 +186,10 @@ section {
     @apply w-full overflow-x-auto;
 }
 
+p {
+  @apply text-subtext;
+}
+
 label {
     @apply flex flex-col items-start w-full;
 

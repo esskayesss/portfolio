@@ -7,6 +7,7 @@ interface ExpListEntryProps {
   website?: string | undefined;
   location: string;
   org: string;
+  description?: string;
 }
 
 export const ExpListEntry: React.FC<ExpListEntryProps> = ({...props}) => {
@@ -20,6 +21,7 @@ export const ExpListEntry: React.FC<ExpListEntryProps> = ({...props}) => {
         <span>{props.timeline}</span>
         <span>{props.location}</span>
       </div>
+      {props.description && <p className="text-sm pt-2">{props.description}</p> }
     </div>
   )
 }
