@@ -239,3 +239,26 @@ label {
 .hljs-formula { color: #d29146; }
 .hljs-emphasis { font-style: italic; }
 .hljs-strong { font-weight: bold; }
+
+.smart-marquee {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+
+.scroll {
+  animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 3rem)); /* Adjust based on content length */
+  }
+}
