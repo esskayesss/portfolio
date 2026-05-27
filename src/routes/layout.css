@@ -1,0 +1,377 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('$lib/assets/fonts/departure-mono.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-dark-10: #000000;
+  --color-dark-20: #02040e;
+  --color-dark-30: #060914;
+  --color-dark-40: #0e101a;
+  --color-dark-50: #191b25;
+  --color-dark-60: #242630;
+  --color-dark-70: #3e4049;
+  --color-dark-80: #4d4f58;
+  --color-dark-90: #5c5e66;
+  --color-dark-100: #64666e;
+
+  --color-light-10: #777880;
+  --color-light-20: #8e9099;
+  --color-light-30: #9a9ca6;
+  --color-light-40: #a8aab5;
+  --color-light-50: #bdbfcb;
+  --color-light-60: #cecfd8;
+  --color-light-70: #dedfe5;
+  --color-light-80: #e5e8ed;
+  --color-light-90: #f1f1f4;
+  --color-light-100: #ffffff;
+
+  --color-red-10: #180702;
+  --color-red-20: #28090e;
+  --color-red-30: #3b0c0e;
+  --color-red-40: #4e0e0e;
+  --color-red-50: #601614;
+  --color-red-60: #842620;
+  --color-red-70: #ba3d31;
+  --color-red-80: #d15547;
+  --color-red-90: #f35b4b;
+  --color-red-100: #ffa8a8;
+
+  --color-green-10: #08180d;
+  --color-green-20: #0d221c;
+  --color-green-30: #172d23;
+  --color-green-40: #213829;
+  --color-green-50: #344e34;
+  --color-green-60: #486440;
+  --color-green-70: #6a8a56;
+  --color-green-80: #8ab364;
+  --color-green-90: #aadb71;
+  --color-green-100: #cbe0b5;
+
+  --color-blue-10: #050e1e;
+  --color-blue-20: #08182e;
+  --color-blue-30: #0b223e;
+  --color-blue-40: #0d2c4e;
+  --color-blue-50: #1b3960;
+  --color-blue-60: #284572;
+  --color-blue-70: #435d95;
+  --color-blue-80: #5e75b9;
+  --color-blue-90: #7088e5;
+  --color-blue-100: #c2caec;
+
+  --color-yellow-10: #372b00;
+  --color-yellow-20: #2c2305;
+  --color-yellow-30: #3a2d07;
+  --color-yellow-40: #4e3e0a;
+  --color-yellow-50: #72550a;
+  --color-yellow-60: #836123;
+  --color-yellow-70: #a48237;
+  --color-yellow-80: #cea455;
+  --color-yellow-90: #e3b352;
+  --color-yellow-100: #efd49f;
+
+  --color-magenta-10: #150718;
+  --color-magenta-20: #270a22;
+  --color-magenta-30: #3a0d2c;
+  --color-magenta-40: #4c1036;
+  --color-magenta-50: #682448;
+  --color-magenta-60: #84375a;
+  --color-magenta-70: #a04a6c;
+  --color-magenta-80: #bb5d7d;
+  --color-magenta-90: #df7caa;
+  --color-magenta-100: #e9bbd2;
+
+  --color-cyan-10: #03141e;
+  --color-cyan-20: #04242d;
+  --color-cyan-30: #05323b;
+  --color-cyan-40: #054951;
+  --color-cyan-50: #076369;
+  --color-cyan-60: #088287;
+  --color-cyan-70: #2aa0a4;
+  --color-cyan-80: #59c9c7;
+  --color-cyan-90: #6ddbdd;
+  --color-cyan-100: #c6f8f9;
+
+  --color-purple-10: #0c091c;
+  --color-purple-20: #140d26;
+  --color-purple-30: #1f1335;
+  --color-purple-40: #2a1844;
+  --color-purple-50: #3d265b;
+  --color-purple-60: #503472;
+  --color-purple-70: #75509f;
+  --color-purple-80: #8666b2;
+  --color-purple-90: #9e77d5;
+  --color-purple-100: #c8b7e0;
+
+  --color-orange-10: #1d120c;
+  --color-orange-20: #261810;
+  --color-orange-30: #3b2415;
+  --color-orange-40: #5d3718;
+  --color-orange-50: #934c0e;
+  --color-orange-60: #ce7016;
+  --color-orange-70: #e67b13;
+  --color-orange-80: #f38921;
+  --color-orange-90: #ffa04d;
+  --color-orange-100: #edc5a0;
+
+  --font-mono: 'Departure Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-sans: 'Departure Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-headings: 'Departure Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --text-xs: 1.1rem;
+  --text-sm: 1.2rem;
+  --text-base: 1.4rem;
+  --text-lg: 1.6rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.2rem;
+  --text-3xl: 2.4rem;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+
+  --spacing-page: 2rem;
+  --spacing-section: 3rem;
+  --spacing-shell: 7.2rem;
+
+  --shadow-shell: 0 0.5rem 1.5rem rgb(6 9 20 / 0.88);
+
+  --color-bg: #060914;
+  --color-fg: #bdbfcb;
+  --color-subtext: #a7a9b5;
+  --color-ghost: #343742;
+
+  --color-dim-fg: #878996;
+  --color-dim-bg: #121520;
+
+  --color-accent-fg: #c6dfec;
+  --color-accent-bg: #0e121f;
+
+  --color-yellow-fg: #e1c084;
+  --color-yellow-bg: #66431f;
+
+  --color-green-fg: #a9d076;
+  --color-green-bg: #1c4642;
+
+  --color-blue-fg: #798ddc;
+  --color-blue-bg: #0d2c4e;
+
+  --color-magenta-fg: #bb5d7d;
+  --color-magenta-bg: #4c1036;
+
+  --color-cyan-fg: #85e0cb;
+  --color-cyan-bg: #104351;
+}
+
+@media (min-width: 600px) {
+  @theme {
+    --text-xs: 1.2rem;
+    --text-sm: 1.3rem;
+    --text-base: 1.4rem;
+    --text-lg: 1.6rem;
+    --text-xl: 1.8rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.4rem;
+  }
+}
+
+:root {
+  font-size: 10px;
+  color-scheme: dark;
+}
+
+* {
+  scroll-behavior: smooth;
+  scroll-margin-top: var(--spacing-shell);
+}
+
+*::selection {
+  @apply bg-ghost text-accent-fg;
+}
+
+*::-moz-selection {
+  @apply bg-ghost text-accent-fg;
+}
+
+html {
+  @apply min-h-dvh bg-bg;
+}
+
+body {
+  @apply m-0 flex min-h-dvh flex-col bg-bg px-8 pb-8 font-mono text-base text-fg antialiased;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-mono);
+}
+
+button,
+a {
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+a {
+  @apply text-cyan-fg underline-offset-2 hover:text-accent-fg hover:underline;
+}
+
+img {
+  @apply max-w-full;
+}
+
+main {
+  @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 py-4;
+}
+
+section {
+  @apply flex flex-col gap-2.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply m-0 font-headings leading-tight text-accent-fg;
+}
+
+h1 {
+  @apply text-xl capitalize;
+}
+
+h2 {
+  @apply text-lg;
+}
+
+h3,
+h4 {
+  @apply text-base;
+}
+
+p {
+  @apply m-0 leading-snug text-subtext;
+}
+
+ul,
+ol {
+  @apply m-0 list-none p-0;
+}
+
+li::before {
+  content: '- ';
+  @apply text-dim-fg;
+}
+
+code,
+kbd,
+pre {
+  font-family: var(--font-mono);
+}
+
+code {
+  @apply rounded-sm bg-dim-bg px-1 text-accent-fg;
+}
+
+pre {
+  @apply my-4 flex flex-col gap-4 overflow-hidden border border-blue-fg bg-bg;
+}
+
+pre code {
+  @apply overflow-x-auto bg-transparent p-4 text-fg;
+}
+
+blockquote {
+  @apply my-2 border-l-2 border-dashed border-blue-fg bg-blue-bg py-2 pr-2 pl-4 text-subtext;
+}
+
+blockquote p {
+  @apply flex flex-col;
+}
+
+blockquote cite {
+  @apply text-xs not-italic text-accent-fg;
+}
+
+blockquote cite::before {
+  content: '- ';
+  @apply text-accent-fg;
+}
+
+table {
+  @apply my-4 w-full table-auto border-collapse;
+}
+
+thead tr {
+  @apply border-b-2 border-ghost;
+}
+
+th {
+  @apply px-2 text-left text-sm whitespace-nowrap text-accent-fg;
+}
+
+tr {
+  @apply border-b border-ghost;
+}
+
+td {
+  @apply border-x border-ghost px-4 py-2 text-subtext;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.heading {
+  @apply flex items-center justify-between gap-4;
+}
+
+.heading a {
+  @apply bg-blue-bg text-base text-accent-fg no-underline hover:underline;
+}
+
+.content {
+  @apply flex flex-col gap-6;
+}
+
+.content p {
+  @apply flow-root;
+}
+
+.content a {
+  @apply text-cyan-fg no-underline hover:underline;
+}
+
+.prose {
+  @apply flex max-w-none flex-col gap-6;
+}
+
+.center-row {
+  @apply flex items-center gap-1;
+}
+
+.btn {
+  @apply inline-flex items-center gap-2.5 bg-fg px-4 py-1 text-base whitespace-nowrap text-bg no-underline hover:bg-accent-fg hover:no-underline;
+}
+
+.btn-muted {
+  @apply border border-ghost bg-transparent text-fg hover:border-accent-fg hover:bg-dim-bg hover:text-accent-fg;
+}
+
+.tag {
+  @apply inline-flex w-fit rounded-sm border border-ghost px-4 py-1 text-xs text-dim-fg;
+}
+
+@media print {
+  body {
+    @apply px-0 pb-0;
+  }
+
+}
