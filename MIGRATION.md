@@ -8,7 +8,7 @@ Target worktree: `.` (`v2-svelte-dev`)
 1. Foundation, Tailwind v4 theme, layout shell — completed.
 2. Data model and homepage parity — completed in this change.
 3. Blog/mdsvex content pipeline and blog routes.
-4. Support page migration.
+4. Support page migration — completed in this change.
 5. Podcast/player parity and polish.
 6. Final accessibility, responsive, metadata, and deployment checks.
 
@@ -37,8 +37,18 @@ Implemented data model and homepage parity with review fixes. Blog mdsvex pipeli
 - Replaced the homepage scaffold with migrated intro, social links, featured projects, current experience, latest article previews, and certifications/achievements.
 - Added temporary `src/lib/blogPreviews.ts` using source frontmatter for `content/blog/brainfuck-c.mdx` so homepage does not claim there are no articles.
 - Kept `/blog` route as placeholder/list placeholder for now; full mdsvex content discovery, rendering, archives, and blog routes remain pending in Checkpoint 3.
-- Kept `/support` route placeholder for later checkpoint.
+- Kept `/support` route placeholder for later checkpoint at the time of Checkpoint 2.
 - Cleaned URL typing by sharing `ExternalHref` from `src/lib/types.ts` and moving URL formatting into helpers instead of markup casts.
+
+## Checkpoint 4 status
+
+Implemented support page parity without real payment processing.
+
+- Ported the support route from Next.js into Svelte with page metadata, sponsor/subscription calls to action, static UPI support card, and support banner section.
+- Added reusable `SupportCard.svelte` and `SupportLinks.svelte` components.
+- Copied `support.webp` and `headshot.webp` into `static/` for SvelteKit asset serving.
+- Kept production behavior as rendered static support content rather than a redirect, so sponsor links remain visible.
+- Added a Tailwind v4 `--aspect-support-banner` theme token to avoid arbitrary aspect utilities.
 
 ## Current verification
 

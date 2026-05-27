@@ -138,6 +138,8 @@
   --spacing-section: 3rem;
   --spacing-shell: 7.2rem;
 
+  --aspect-support-banner: 5 / 1;
+
   --shadow-shell: 0 0.5rem 1.5rem rgb(6 9 20 / 0.88);
 
   --color-bg: #060914;
