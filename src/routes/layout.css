@@ -355,6 +355,37 @@ input[type='number']::-webkit-outer-spin-button {
   @apply flex max-w-none flex-col gap-6;
 }
 
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3 {
+  @apply pt-2;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  @apply flex flex-col gap-2 pl-6 text-subtext;
+}
+
+.blog-prose ul {
+  @apply list-disc;
+}
+
+.blog-prose ol {
+  @apply list-decimal;
+}
+
+.blog-prose li::before {
+  content: none;
+}
+
+.blog-prose img {
+  @apply border border-ghost bg-dim-bg;
+}
+
+.blog-prose hr {
+  @apply border-ghost;
+}
+
 .center-row {
   @apply flex items-center gap-1;
 }

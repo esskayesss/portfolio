@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { latestBlogPreviews } from '$lib/blogPreviews';
+	import { latestBlogPosts } from '$lib/blogs';
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import CertListEntry from '$lib/components/CertListEntry.svelte';
 	import ExperienceSection from '$lib/components/ExperienceSection.svelte';
@@ -45,9 +45,13 @@
 		<a href={resolve('/blog')}>See All</a>
 	</div>
 	<div class="content">
-		{#each latestBlogPreviews as post (post.slug)}
-			<BlogCard {post} />
-		{/each}
+		{#if latestBlogPosts.length > 0}
+			{#each latestBlogPosts as post (post.slug)}
+				<BlogCard {post} />
+			{/each}
+		{:else}
+			<p>No posts published yet.</p>
+		{/if}
 	</div>
 </section>
 

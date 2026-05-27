@@ -1,25 +1,33 @@
 export type ExternalHref = `https://${string}` | `http://${string}`;
 
-export interface BlogMetadata {
-	title: string;
-	description: string;
-	slug: string;
-	date: string;
-	tags: Array<string>;
-	type: "tutorial" | "project" | "article" | "diary";
-	collection?: string | undefined;
-	published?: boolean | undefined;
-	cover_image?: string | undefined;
-	prev_slug: string | undefined;
-	next_slug: string | undefined;
-	reading_time: {
-		minutes: number;
-		words: number;
-	};
+export interface ReadingTime {
+	minutes: number;
+	words: number;
 }
 
-export interface BlogPost extends BlogMetadata {
-	body: string;
+export interface RawBlogMetadata {
+	title: string;
+	description: string;
+	date: string | Date;
+	tags: Array<string>;
+	type: "tutorial" | "project" | "article" | "diary" | "worklog";
+	collection?: string | undefined;
+	published?: boolean | undefined;
+	cover_image?: boolean | string | undefined;
+	reading_time?: ReadingTime | undefined;
+}
+
+export interface BlogMetadata
+	extends Omit<RawBlogMetadata, "date" | "reading_time"> {
+	slug: string;
+	date: string;
+	sort_date: string;
+	source_path: string;
+	cover_image?: boolean | undefined;
+	cover_url?: string | undefined;
+	prev_slug: string | undefined;
+	next_slug: string | undefined;
+	reading_time: ReadingTime;
 }
 
 export interface ProjectMetadata {

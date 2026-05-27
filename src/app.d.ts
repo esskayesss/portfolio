@@ -1,5 +1,24 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
+
+declare module "*.svx" {
+	import type { Component } from "svelte";
+	import type { RawBlogMetadata } from "$lib/types";
+
+	export const metadata: RawBlogMetadata;
+	const component: Component;
+	export default component;
+}
+
+declare module "*.md" {
+	import type { Component } from "svelte";
+	import type { RawBlogMetadata } from "$lib/types";
+
+	export const metadata: RawBlogMetadata;
+	const component: Component;
+	export default component;
+}
+
 declare global {
 	namespace App {
 		// interface Error {}

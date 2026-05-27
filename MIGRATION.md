@@ -7,7 +7,7 @@ Target worktree: `.` (`v2-svelte-dev`)
 
 1. Foundation, Tailwind v4 theme, layout shell — completed.
 2. Data model and homepage parity — completed in this change.
-3. Blog/mdsvex content pipeline and blog routes.
+3. Blog/mdsvex content pipeline and blog routes — completed in this change.
 4. Support page migration — completed in this change.
 5. Podcast/player parity and polish.
 6. Final accessibility, responsive, metadata, and deployment checks.
@@ -40,6 +40,25 @@ Implemented data model and homepage parity with review fixes. Blog mdsvex pipeli
 - Kept `/support` route placeholder for later checkpoint at the time of Checkpoint 2.
 - Cleaned URL typing by sharing `ExternalHref` from `src/lib/types.ts` and moving URL formatting into helpers instead of markup casts.
 
+## Checkpoint 3 status
+
+Implemented the real mdsvex-backed blog pipeline.
+
+- Copied `../main/content/blog/brainfuck-c.mdx` into `src/content/blog/brainfuck-c.svx`.
+- Converted malformed React/MDX-only content into mdsvex-safe markdown: the spaced YouTube component became a normal YouTube link, the React `<Table />` became a markdown table, and code fences use standard language markers.
+- Added `src/lib/blogs.ts` with eager `import.meta.glob` content loading, metadata normalization, slug extraction, date sorting, draft filtering in production only, previous/next slug linking, latest-post exports, and simple search.
+- Updated shared blog types to model raw mdsvex frontmatter separately from normalized blog metadata and rendered blog posts.
+- Replaced homepage temporary blog previews with real latest posts from the content pipeline.
+- Added blog routes for `/blog`, `/blog/archive`, `/blog/[slug]`, and `/blog/search`.
+- Added `BlogPostHeader.svelte` and strengthened blog prose styles in `src/routes/layout.css`.
+- Removed `src/lib/blogPreviews.ts`.
+
+Intentional limitations:
+
+- Syntax highlighting remains deferred; code blocks render as styled plain code.
+- Source post image paths are preserved even though matching static image assets were not present in the source worktree.
+- Build currently emits mdsvex-generated Svelte 5 deprecation warnings for `<script context="module">`. Source `.svx` files do not contain that script; warning appears from mdsvex output, so it remains pending an upstream mdsvex/Svelte compatibility fix.
+
 ## Checkpoint 4 status
 
 Implemented support page parity without real payment processing.
@@ -49,6 +68,20 @@ Implemented support page parity without real payment processing.
 - Copied `support.webp` and `headshot.webp` into `static/` for SvelteKit asset serving.
 - Kept production behavior as rendered static support content rather than a redirect, so sponsor links remain visible.
 - Added a Tailwind v4 `--aspect-support-banner` theme token to avoid arbitrary aspect utilities.
+
+## Blog pipeline review fixes
+
+Applied follow-up fixes for blog route correctness and source parity.
+
+- Added a real SvelteKit `/blog/[slug]` load function that returns metadata or throws `error(404)` instead of rendering fake 404 UI with HTTP 200.
+- Reworked `src/lib/blogs.ts` into a raw-frontmatter metadata registry using recursive `/src/content/blog/**/*.{svx,md}` globs, so list/search/archive routes no longer eagerly import mdsvex components.
+- Kept lazy mdsvex component imports only in the slug detail route and keyed component lookup by source path from load data.
+- Added nested collection-aware slug generation: final filename by default, with collection suffix only when duplicate slugs require disambiguation.
+- Matched source reading-time/date behavior: 60 WPM, `Math.floor`, display dates like `March 20, 2024`, plus separate sortable ISO date.
+- Added `worklog` to accepted blog types.
+- Added cover image rendering support for blog cards and post headers when metadata says a cover exists.
+- Replaced missing `brainfuck-c.svx` image references with markdown caption placeholders so the browser does not request absent `/static/blog/realtime-chat-app/*.webp` files.
+- Removed empty spacer markup from blog post navigation.
 
 ## Current verification
 

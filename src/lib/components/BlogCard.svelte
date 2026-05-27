@@ -12,6 +12,14 @@
 </script>
 
 <article class="flex flex-col gap-2 border border-ghost p-4">
+	{#if post.cover_image}
+		<img
+			class="w-full object-contain mix-blend-lighten"
+			src={post.cover_url ?? `/blog/${post.slug}/cover.webp`}
+			alt=""
+			loading="lazy"
+		/>
+	{/if}
 	<div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-dim-fg">
 		<span>{post.date} · {post.reading_time.minutes} minute read</span>
 		{#if post.collection}
