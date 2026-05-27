@@ -1,11 +1,18 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { blogPosts } from '$lib/blogs';
+	import { canonicalUrl } from '$lib/site';
+
+	const description = 'Date-sorted archive of all blog posts.';
 </script>
 
 <svelte:head>
 	<title>blog archive · esskayesss.</title>
-	<meta name="description" content="Date-sorted archive of all blog posts." />
+	<meta name="description" content={description} />
+	<meta property="og:title" content="blog archive · esskayesss." />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl('/blog/archive')} />
+	<link rel="canonical" href={canonicalUrl('/blog/archive')} />
 </svelte:head>
 
 <section>

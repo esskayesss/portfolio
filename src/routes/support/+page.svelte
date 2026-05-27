@@ -2,14 +2,18 @@
 	import { asset } from '$app/paths';
 	import SupportUpiCard from '$lib/components/SupportUpiCard.svelte';
 	import SupportLinks from '$lib/components/SupportLinks.svelte';
+	import { canonicalUrl } from '$lib/site';
+
+	const description = 'Support esskayesss by sponsoring him on GitHub or subscribing on X.';
 </script>
 
 <svelte:head>
 	<title>support esskayesss.</title>
-	<meta
-		name="description"
-		content="Support esskayesss by sponsoring him on GitHub or subscribing on X."
-	/>
+	<meta name="description" content={description} />
+	<meta property="og:title" content="support esskayesss." />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl('/support')} />
+	<link rel="canonical" href={canonicalUrl('/support')} />
 </svelte:head>
 
 <section>

@@ -1,42 +1,36 @@
-# sv
+# esskayesss.dev Svelte portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SvelteKit + Tailwind CSS v4 migration of the portfolio in `../main`.
 
-## Creating a project
+## Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- SvelteKit 2 / Svelte 5 runes
+- Tailwind CSS v4 with CSS-first theme tokens in `src/routes/layout.css`
+- mdsvex for blog content in `src/content/blog`
+- Bun for scripts and dependency management
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Routes
 
-To recreate this project with the same configuration:
+- `/` — homepage with intro, socials, projects, experience, latest posts, certifications
+- `/projects` — project archive
+- `/support` — support links and UPI card
+- `/blog` — latest blog posts
+- `/blog/archive` — date-sorted blog archive
+- `/blog/search` — client-side blog search
+- `/blog/[slug]` — mdsvex blog post page
+- `/sitemap.xml` — sitemap including static routes and production-visible blog posts
+- `/robots.txt` — crawler policy with sitemap link
 
-```sh
-# recreate this project
-bun x sv@0.15.3 create --template minimal --types ts --add mdsvex mcp="ide:other+setup:local" tailwindcss="plugins:none" eslint --install bun .
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+## Commands
 
 ```sh
-npm run build
+bun install
+bun run dev
+bun run check
+bun run lint
+bun run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Deployment note
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Project still uses `@sveltejs/adapter-auto`. That may warn during build outside supported deployment environments. This looks like a static portfolio, but no static adapter dependency is installed, so adapter was left unchanged until deployment target is known.

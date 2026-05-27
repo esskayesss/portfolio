@@ -225,6 +225,14 @@ a {
   @apply transition-colors duration-300 ease-in-out;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-offset-2 outline-cyan-fg;
+}
+
 a {
   @apply text-cyan-fg underline-offset-2 hover:text-accent-fg hover:underline;
 }
@@ -435,4 +443,7 @@ input[type='number']::-webkit-outer-spin-button {
     @apply px-0 pb-0;
   }
 
+  .no-print {
+    @apply hidden;
+  }
 }

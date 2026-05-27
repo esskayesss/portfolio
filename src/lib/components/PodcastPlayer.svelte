@@ -79,11 +79,12 @@
 				type="button"
 				class="absolute right-0 bottom-full border-x border-t border-ghost bg-bg px-4 py-1 text-sm text-fg hover:bg-dim-bg hover:text-accent-fg"
 				onclick={closePodcast}
+				aria-label="Close podcast player"
 			>
 				close x
 			</button>
 
-			<div class="flex w-full justify-between gap-2" bind:this={progressElement} aria-label="Playback progress">
+			<div class="flex w-full justify-between gap-2" bind:this={progressElement} role="group" aria-label="Playback progress">
 				{#each rectangleIndices as index (index)}
 					<button
 						type="button"
@@ -102,6 +103,7 @@
 						type="button"
 						class="flex items-center gap-2 border border-fg bg-bg px-3 py-1 text-fg hover:bg-dim-bg hover:text-accent-fg"
 						onclick={togglePodcastPlayback}
+						aria-label={podcastPlayer.isPlaying ? 'Pause podcast' : 'Play podcast'}
 					>
 						<span>{podcastPlayer.isPlaying ? 'pause' : 'play'}</span>
 						{#if podcastPlayer.isPlaying}

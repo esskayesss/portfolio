@@ -10,7 +10,7 @@ Target worktree: `.` (`v2-svelte-dev`)
 3. Blog/mdsvex content pipeline and blog routes — completed in this change.
 4. Support page migration — completed in this change.
 5. Podcast/player parity and polish — completed in this change.
-6. Final accessibility, responsive, metadata, and deployment checks.
+6. Final accessibility, responsive, metadata, and deployment checks — completed in this change.
 
 ## Checkpoint 1 status
 
@@ -93,6 +93,20 @@ Implemented simulated podcast player parity without real audio.
 - Ported simulated elapsed-time behavior with a hardcoded 340 second duration, 100ms timer, play/pause, close, seekable progress rectangles, formatted time, and title display.
 - Kept implementation audio-free: no media element, no network audio fetch, only simulated progress.
 - Added Tailwind v4 theme-backed CSS tokens/classes for progress block sizing and title marquee animation instead of inline arbitrary utilities.
+
+## Checkpoint 6 status
+
+Implemented final parity, SEO, and accessibility polish.
+
+- Replaced starter README content with project-specific Svelte migration docs and route inventory.
+- Added a SvelteKit error page matching the source `app/not-found.tsx` tone for 404s, with noindex metadata and home recovery link.
+- Ported crawler metadata: `static/robots.txt` now allows public pages, disallows `/private/`, and points to `/sitemap.xml`.
+- Added `src/routes/sitemap.xml/+server.ts` with static portfolio routes plus production-visible blog posts and blog `lastmod` dates.
+- Added shared site metadata helpers in `src/lib/site.ts` and canonical/Open Graph metadata across root, projects, support, blog list/archive/search, and post pages.
+- Added global focus-visible outlines for keyboard navigation.
+- Tightened podcast player accessibility with close/play labels and progress grouping.
+- Marked blog listen action as print-hidden alongside the global podcast player.
+- Kept `@sveltejs/adapter-auto`; this may warn outside supported deployment hosts, but no static adapter dependency is installed and deployment target is not confirmed.
 
 ## Current verification
 

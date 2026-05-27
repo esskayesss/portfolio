@@ -2,11 +2,18 @@
 	import { resolve } from '$app/paths';
 	import { blogPosts } from '$lib/blogs';
 	import BlogCard from '$lib/components/BlogCard.svelte';
+	import { canonicalUrl } from '$lib/site';
+
+	const description = 'Technical notes, projects, and experiments by Saurabh Sharma.';
 </script>
 
 <svelte:head>
 	<title>blog · esskayesss.</title>
-	<meta name="description" content="Technical notes, projects, and experiments by Saurabh Sharma." />
+	<meta name="description" content={description} />
+	<meta property="og:title" content="blog · esskayesss." />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl('/blog')} />
+	<link rel="canonical" href={canonicalUrl('/blog')} />
 </svelte:head>
 
 <section>

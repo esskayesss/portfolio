@@ -11,7 +11,7 @@
 
 <button
 	type="button"
-	class="inline-flex w-fit items-center gap-2 border border-cyan-fg bg-cyan-bg px-4 py-1 text-cyan-fg hover:bg-dim-bg hover:text-accent-fg"
+	class="no-print inline-flex w-fit items-center gap-2 border border-cyan-fg bg-cyan-bg px-4 py-1 text-cyan-fg hover:bg-dim-bg hover:text-accent-fg"
 	onclick={() => playPodcast({ slug, title })}
 	aria-label={`Listen to ${title}`}
 >

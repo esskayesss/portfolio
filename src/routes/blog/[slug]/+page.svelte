@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BlogPodcastAction from '$lib/components/BlogPodcastAction.svelte';
 	import BlogPostHeader from '$lib/components/BlogPostHeader.svelte';
+	import { canonicalUrl } from '$lib/site';
 
 	import type { BlogMetadata } from '$lib/types';
 	import type { Component } from 'svelte';
@@ -30,6 +31,16 @@
 <svelte:head>
 	<title>{data.post.title} · esskayesss.</title>
 	<meta name="description" content={data.post.description} />
+	<meta name="keywords" content={data.post.tags.join(', ')} />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={`${data.post.title} · esskayesss.`} />
+	<meta property="og:description" content={data.post.description} />
+	<meta property="og:url" content={canonicalUrl(`/blog/${data.post.slug}`)} />
+	<meta property="article:published_time" content={data.post.sort_date} />
+	{#each data.post.tags as tag (tag)}
+		<meta property="article:tag" content={tag} />
+	{/each}
+	<link rel="canonical" href={canonicalUrl(`/blog/${data.post.slug}`)} />
 </svelte:head>
 
 <article class="flex flex-col gap-6">

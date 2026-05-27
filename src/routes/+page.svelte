@@ -8,7 +8,17 @@
 	import SocialBar from '$lib/components/SocialBar.svelte';
 	import { certifications } from '$lib/certifications';
 	import { featuredProjects } from '$lib/projects';
+	import { canonicalUrl, siteDescription, siteName } from '$lib/site';
 </script>
+
+<svelte:head>
+	<title>{siteName}</title>
+	<meta name="description" content={siteDescription} />
+	<meta property="og:title" content={siteName} />
+	<meta property="og:description" content={siteDescription} />
+	<meta property="og:url" content={canonicalUrl('/')} />
+	<link rel="canonical" href={canonicalUrl('/')} />
+</svelte:head>
 
 <section>
 	<div class="heading">
