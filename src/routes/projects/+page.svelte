@@ -1,10 +1,18 @@
-<section class="border border-ghost bg-accent-bg p-6">
+<script lang="ts">
+	import ProjectListEntry from '$lib/components/ProjectListEntry.svelte';
+	import { projects } from '$lib/projects';
+</script>
+
+<section>
 	<div class="heading">
-		<span class="tag">migration placeholder</span>
+		<h1>Projects</h1>
 	</div>
 
 	<div class="content">
-		<h1>projects</h1>
-		<p>Projects page is a migration placeholder for Checkpoint 1.</p>
+		{#each projects as project (project.title)}
+			<div class="border border-ghost p-4">
+				<ProjectListEntry {project} />
+			</div>
+		{/each}
 	</div>
 </section>

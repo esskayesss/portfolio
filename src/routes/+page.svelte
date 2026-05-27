@@ -1,28 +1,63 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+	import { latestBlogPreviews } from '$lib/blogPreviews';
+	import BlogCard from '$lib/components/BlogCard.svelte';
+	import CertListEntry from '$lib/components/CertListEntry.svelte';
+	import ExperienceSection from '$lib/components/ExperienceSection.svelte';
+	import ProjectListEntry from '$lib/components/ProjectListEntry.svelte';
 	import SocialBar from '$lib/components/SocialBar.svelte';
+	import { certifications } from '$lib/certifications';
+	import { featuredProjects } from '$lib/projects';
 </script>
 
-<section class="border border-ghost bg-accent-bg p-6">
+<section>
 	<div class="heading">
-		<span class="tag">portfolio v2</span>
+		<h1>Hi! I'm Saurabh Sharma. 👋</h1>
 	</div>
-
 	<div class="content">
-		<h1>esskayesss.</h1>
 		<p>
-			software engineer building quiet interfaces, useful systems, and occasional notes for future
-			self.
+			I’m a final year CS student. I build things from scratch and peek behind abstractions. I'm obsessed with understanding how computers work at their lowest levels – both in silicon and software. You'll find me writing C and Zig, implementing protocols from scratch or tinkering with hardware. I value curiosity, first principles thinking, and getting my hands dirty with fundamentals. When I'm not coding close to the metal, I'm probably exploring new languages or rebuilding tools to figure out how they work.
 		</p>
-		<p>
-			Svelte migration foundation is live. Projects, blog, support, and richer homepage content land in
-			later checkpoints.
-		</p>
+		<SocialBar />
 	</div>
 </section>
 
 <section>
 	<div class="heading">
-		<h2>elsewhere</h2>
+		<h1>Projects</h1>
+		<a href={resolve('/projects')}>See All</a>
 	</div>
-	<SocialBar />
+	<div class="content">
+		{#each featuredProjects.slice(0, 3) as project (project.title)}
+			<ProjectListEntry {project} />
+		{/each}
+	</div>
+</section>
+
+<section>
+	<h1>Currently</h1>
+	<ExperienceSection />
+</section>
+
+<section>
+	<div class="heading">
+		<h1>latest articles</h1>
+		<a href={resolve('/blog')}>See All</a>
+	</div>
+	<div class="content">
+		{#each latestBlogPreviews as post (post.slug)}
+			<BlogCard {post} />
+		{/each}
+	</div>
+</section>
+
+<section>
+	<div class="heading">
+		<h1>certifications and achievements</h1>
+	</div>
+	<div class="content">
+		{#each certifications as certification (certification.title)}
+			<CertListEntry {certification} />
+		{/each}
+	</div>
 </section>
