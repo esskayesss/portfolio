@@ -137,6 +137,11 @@
   --spacing-page: 2rem;
   --spacing-section: 3rem;
   --spacing-shell: 7.2rem;
+  --spacing-podcast-progress-width: 1.2rem;
+  --spacing-podcast-progress-height: 2rem;
+  --spacing-podcast-title-gap: 4.8rem;
+
+  --animate-podcast-marquee: podcast-marquee 12s linear infinite;
 
   --aspect-support-banner: 5 / 1;
 
@@ -400,6 +405,29 @@ input[type='number']::-webkit-outer-spin-button {
 
 .tag {
   @apply inline-flex w-fit rounded-sm border border-ghost px-4 py-1 text-xs text-dim-fg;
+}
+
+.podcast-progress-block {
+  width: var(--spacing-podcast-progress-width);
+  height: var(--spacing-podcast-progress-height);
+}
+
+.podcast-title-marquee {
+  animation: var(--animate-podcast-marquee);
+}
+
+.podcast-title-copy {
+  left: calc(100% + var(--spacing-podcast-title-gap));
+}
+
+@keyframes podcast-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--spacing-podcast-title-gap)));
+  }
 }
 
 @media print {

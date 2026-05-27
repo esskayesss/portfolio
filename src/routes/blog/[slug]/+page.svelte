@@ -1,4 +1,5 @@
 <script lang="ts">
+	import BlogPodcastAction from '$lib/components/BlogPodcastAction.svelte';
 	import BlogPostHeader from '$lib/components/BlogPostHeader.svelte';
 
 	import type { BlogMetadata } from '$lib/types';
@@ -33,6 +34,7 @@
 
 <article class="flex flex-col gap-6">
 	<BlogPostHeader post={data.post} />
+	<BlogPodcastAction slug={data.post.slug} title={data.post.title} />
 	<div class="blog-prose prose border border-ghost bg-accent-bg p-6">
 		<Content />
 	</div>

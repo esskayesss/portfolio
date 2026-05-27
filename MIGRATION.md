@@ -9,7 +9,7 @@ Target worktree: `.` (`v2-svelte-dev`)
 2. Data model and homepage parity — completed in this change.
 3. Blog/mdsvex content pipeline and blog routes — completed in this change.
 4. Support page migration — completed in this change.
-5. Podcast/player parity and polish.
+5. Podcast/player parity and polish — completed in this change.
 6. Final accessibility, responsive, metadata, and deployment checks.
 
 ## Checkpoint 1 status
@@ -82,6 +82,17 @@ Applied follow-up fixes for blog route correctness and source parity.
 - Added cover image rendering support for blog cards and post headers when metadata says a cover exists.
 - Replaced missing `brainfuck-c.svx` image references with markdown caption placeholders so the browser does not request absent `/static/blog/realtime-chat-app/*.webp` files.
 - Removed empty spacer markup from blog post navigation.
+
+## Checkpoint 5 status
+
+Implemented simulated podcast player parity without real audio.
+
+- Added shared Svelte 5 rune module state in `src/lib/podcast/player.svelte.ts`, fixing the source bug where `WavePlayer` and global `PodcastPlayer` each owned isolated hook state.
+- Mounted `PodcastPlayer.svelte` globally from the root layout so any blog action can open the same player instance.
+- Added a blog post listen action that passes the current slug and title into the shared player.
+- Ported simulated elapsed-time behavior with a hardcoded 340 second duration, 100ms timer, play/pause, close, seekable progress rectangles, formatted time, and title display.
+- Kept implementation audio-free: no media element, no network audio fetch, only simulated progress.
+- Added Tailwind v4 theme-backed CSS tokens/classes for progress block sizing and title marquee animation instead of inline arbitrary utilities.
 
 ## Current verification
 
