@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
+import { PodcastPlayer } from "@/components/ui/podcast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,6 +41,7 @@ export default function RootLayout({
         className={`relative ${geistSans.variable} ${geistMono.variable} ${protoMono.variable} antialiased`}
       >
         {children}
+        <PodcastPlayer />
       </body>
     </html>
   );
