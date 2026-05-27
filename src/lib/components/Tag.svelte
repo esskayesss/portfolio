@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import type { ExternalHref } from '$lib/types';
 
 	type TagColor = 'magenta' | 'green' | 'blue' | 'dim';
@@ -21,33 +22,33 @@
 		dim: 'bg-dim-bg text-fg'
 	};
 
-	const iconLabel: Record<TagIcon, string> = {
-		web: 'web',
-		github: 'github',
-		org: 'org',
+	const iconName: Record<TagIcon, string> = {
+		web: 'ph:globe-simple',
+		github: 'ph:github-logo',
+		org: 'ph:buildings',
 		none: ''
 	};
 
 	const external = $derived(href !== undefined);
 	const classes = $derived(
-		`inline-flex w-fit items-center gap-1 px-1 text-sm no-underline hover:underline ${colorClass[color]}`
+		`inline-flex w-fit items-center gap-1 px-1 text-sm text-fg no-underline underline-offset-4 hover:text-fg hover:underline ${colorClass[color]}`
 	);
 </script>
 
 {#if href}
 	<a class={classes} href={href} target="_blank" rel="external noreferrer" aria-label={ariaLabel}>
 		{#if icon !== 'none'}
-			<span class="text-sm text-accent-fg" aria-hidden="true">{iconLabel[icon]}</span>
+			<Icon icon={iconName[icon]} class="size-4 shrink-0" aria-hidden="true" />
 		{/if}
 		<span>{title}</span>
 		{#if external}
-			<span class="text-accent-fg" aria-hidden="true">↗</span>
+			<Icon icon="ph:arrow-up-right" class="size-4 shrink-0" aria-hidden="true" />
 		{/if}
 	</a>
 {:else}
 	<span class={classes} aria-label={ariaLabel}>
 		{#if icon !== 'none'}
-			<span class="text-sm text-accent-fg" aria-hidden="true">{iconLabel[icon]}</span>
+			<Icon icon={iconName[icon]} class="size-4 shrink-0" aria-hidden="true" />
 		{/if}
 		<span>{title}</span>
 	</span>

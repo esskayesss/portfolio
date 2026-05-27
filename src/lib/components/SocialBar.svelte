@@ -1,17 +1,19 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import { socials } from './socials';
 </script>
 
-<nav class="grid grid-cols-2 gap-2 border border-ghost p-4 text-sm sm:grid-cols-3" aria-label="Social links">
+<nav class="flex place-content-around border border-ghost p-4 text-2xl" aria-label="Social links">
 	{#each socials as social (social.href)}
 		<a
-			class="text-fg no-underline hover:text-accent-fg hover:no-underline"
+			class={`text-fg no-underline ${social.hoverClass} hover:no-underline`}
 			href={social.href}
 			target="_blank"
 			rel="external noreferrer"
 			aria-label={social.label}
+			title={social.label}
 		>
-			{social.label}
+			<Icon icon={social.icon} aria-hidden="true" />
 		</a>
 	{/each}
 </nav>

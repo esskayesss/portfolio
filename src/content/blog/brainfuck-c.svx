@@ -7,6 +7,36 @@ tags: [c, brainfuck, interpreters]
 published: false
 ---
 
+<script lang="ts">
+	import CodeBlock from '$lib/components/CodeBlock.svelte';
+
+	const advancedDashCode = `from dash.dependencies import Input, Output
+
+# Custom callback with multiple inputs and outputs
+@app.callback(
+    [Output('output-1', 'value'), Output('output-2', 'value')],
+    [Input('input-1', 'value'), Input('input-2', 'value')]
+)
+def custom_callback(input1, input2):
+    # Perform custom logic
+    output1 = input1 + input2
+    output2 = input1 * input2
+    return output1, output2`;
+
+	const serverCode = `let messageQueue = [];
+const BATCH_INTERVAL = 50; // ms
+
+setInterval(() => {
+    if (messageQueue.length > 0) {
+        const batch = JSON.stringify(messageQueue);
+        wss.clients.forEach(client => {
+            client.send(batch);
+        });
+        messageQueue = [];
+    }
+}, BATCH_INTERVAL);`;
+</script>
+
 Brainfuck is one of the most famous esoteric languages. It was developed by Urban Muller in an attempt to make a language for which he could write the smallest possible compiler for the AmigaOS.
 
 Video reference: [06zBsG9C7-g on YouTube](https://www.youtube.com/watch?v=06zBsG9C7-g)
@@ -22,20 +52,7 @@ The rise of real-time applications has transformed how we think about web commun
 
 Let's build a basic chat server that handles thousands of concurrent connections. First, set up your WebSocket server:
 
-```python
-from dash.dependencies import Input, Output
-
-# Custom callback with multiple inputs and outputs
-@app.callback(
-    [Output('output-1', 'value'), Output('output-2', 'value')],
-    [Input('input-1', 'value'), Input('input-2', 'value')]
-)
-def custom_callback(input1, input2):
-    # Perform custom logic
-    output1 = input1 + input2
-    output2 = input1 * input2
-    return output1, output2
-```
+<CodeBlock code={advancedDashCode} lang="python" filename="advanced-dash.py" />
 
 > Diagram placeholder: real-time message flow. Source image asset was not present during migration.
 
@@ -57,20 +74,7 @@ Let's explore some optimization techniques:
 
 Here's how message batching looks in practice:
 
-```javascript
-let messageQueue = [];
-const BATCH_INTERVAL = 50; // ms
-
-setInterval(() => {
-    if (messageQueue.length > 0) {
-        const batch = JSON.stringify(messageQueue);
-        wss.clients.forEach(client => {
-            client.send(batch);
-        });
-        messageQueue = [];
-    }
-}, BATCH_INTERVAL);
-```
+<CodeBlock code={serverCode} lang="javascript" filename="server.js" />
 
 # Looking Ahead
 

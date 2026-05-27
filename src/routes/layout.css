@@ -1,8 +1,24 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'Departure Mono';
-  src: url('$lib/assets/fonts/departure-mono.woff2') format('woff2');
+  font-family: 'Geist Sans';
+  src: url('$lib/assets/fonts/GeistVF.woff') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('$lib/assets/fonts/GeistMonoVF.woff') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proto Mono';
+  src: url('$lib/assets/fonts/ProtoMono.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -119,9 +135,10 @@
   --color-orange-90: #ffa04d;
   --color-orange-100: #edc5a0;
 
-  --font-mono: 'Departure Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
-  --font-sans: 'Departure Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
-  --font-headings: 'Departure Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-proto: 'Proto Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-headings: 'Proto Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
 
   --text-xs: 1.1rem;
   --text-sm: 1.2rem;
@@ -209,7 +226,9 @@ html {
 }
 
 body {
-  @apply m-0 flex min-h-dvh flex-col bg-bg px-8 pb-8 font-mono text-base text-fg antialiased;
+  font-family: 'Geist Mono', monospace;
+  font-optical-sizing: auto;
+  @apply m-0 flex min-h-dvh flex-col bg-bg px-8 pb-8 text-base text-fg antialiased;
 }
 
 body,
@@ -217,7 +236,7 @@ button,
 input,
 select,
 textarea {
-  font-family: var(--font-mono);
+  font-family: inherit;
 }
 
 button,
@@ -374,21 +393,56 @@ input[type='number']::-webkit-outer-spin-button {
   @apply pt-2;
 }
 
-.blog-prose ul,
-.blog-prose ol {
-  @apply flex flex-col gap-2 pl-6 text-subtext;
-}
-
 .blog-prose ul {
-  @apply list-disc;
+  @apply my-2 list-disc pl-6 text-subtext;
 }
 
 .blog-prose ol {
-  @apply list-decimal;
+  @apply my-2 list-decimal pl-6 text-subtext;
+}
+
+.blog-prose li {
+  @apply my-1 leading-snug;
+}
+
+.blog-prose li::marker {
+  @apply text-dim-fg;
 }
 
 .blog-prose li::before {
   content: none;
+}
+
+.blog-prose .code-block {
+  @apply my-4 overflow-hidden border border-blue-fg bg-bg;
+}
+
+.blog-prose .code-block__bar {
+  @apply flex items-center justify-between gap-4 border-b border-ghost bg-blue-bg px-4 py-2 font-proto text-xs text-accent-fg;
+}
+
+.blog-prose .code-block__meta {
+  @apply flex min-w-0 items-center gap-2;
+}
+
+.blog-prose .code-block__filename {
+  @apply truncate text-fg;
+}
+
+.blog-prose .code-block__lang {
+  @apply inline-flex w-fit rounded-sm border border-dim-fg bg-bg px-2 py-0 text-xs text-dim-fg uppercase;
+}
+
+.blog-prose .code-block__copy {
+  @apply flex shrink-0 items-center gap-1 text-dim-fg hover:text-accent-fg;
+}
+
+.blog-prose .code-block pre {
+  @apply m-0 border-0 bg-bg;
+}
+
+.blog-prose .code-block pre code {
+  @apply block overflow-x-auto p-4 pt-4 text-fg;
 }
 
 .blog-prose img {
