@@ -161,8 +161,6 @@
   --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --motion-duration: 220ms;
   --motion-stagger: 80ms;
-  --animate-motion-fade-up: motion-fade-up var(--motion-duration) var(--motion-ease) both;
-  --animate-motion-pop: motion-pop var(--motion-duration) var(--motion-ease) both;
   --animate-podcast-marquee: podcast-marquee 12s linear infinite;
 
   --aspect-support-banner: 5 / 1;
@@ -311,15 +309,15 @@ main {
 
 .site-shell > header,
 .site-shell > footer {
-  animation: motion-fade var(--motion-duration) var(--motion-ease) both;
+  animation: motion-fade var(--motion-duration) var(--motion-ease) backwards;
 }
 
 .site-shell > main {
-  animation: var(--animate-motion-fade-up);
+  animation: motion-fade-up var(--motion-duration) var(--motion-ease) backwards;
 }
 
 main > * {
-  animation: var(--animate-motion-fade-up);
+  animation: motion-fade-up var(--motion-duration) var(--motion-ease) backwards;
   animation-delay: var(--motion-stagger);
 }
 
@@ -337,7 +335,7 @@ main > *:focus-within {
 }
 
 .motion-panel {
-  animation: var(--animate-motion-pop);
+  animation: motion-pop var(--motion-duration) var(--motion-ease) both;
   transform-origin: top right;
   will-change: transform, opacity;
 }
