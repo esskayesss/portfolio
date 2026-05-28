@@ -47,7 +47,7 @@
 	{#if isOpen}
 		<button
 			type="button"
-			class="motion-backdrop fixed top-0 left-0 z-40 h-screen w-screen cursor-default bg-transparent backdrop-blur-sm"
+			class="motion-backdrop fixed inset-0 z-40 cursor-default bg-transparent backdrop-blur-sm"
 			aria-label="Close menu backdrop"
 			onclick={closeMenu}
 		></button>
