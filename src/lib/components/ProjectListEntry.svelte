@@ -17,7 +17,7 @@
 
 <article class="flex flex-col gap-1">
 	<div class="flex items-center justify-between gap-4">
-		<h2 class="text-base text-fg">{project.title}</h2>
+		<span class="text-base text-fg">{project.title}</span>
 		<div class="flex flex-wrap justify-end gap-1">
 			{#if project.website}
 				<Tag href={project.website} title={websiteHost} icon="web" color="magenta" />

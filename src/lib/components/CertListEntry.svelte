@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import type { CertificationMetadata } from '$lib/types';
 
 	type Props = {
@@ -8,16 +9,18 @@
 	let { certification }: Props = $props();
 
 	const issuerIcon: Record<CertificationMetadata['issuer'], string> = {
-		Coursera: 'course',
-		Kaggle: 'kaggle',
-		Contest: 'award'
+		Coursera: 'ph:certificate',
+		Kaggle: 'ph:chart-line-up',
+		Contest: 'ph:trophy'
 	};
 </script>
 
 <article class="flex flex-col gap-1">
 	<div class="flex items-center justify-between gap-4">
-		<h2>{certification.title}</h2>
-		<span class="bg-dim-bg px-1 text-sm text-accent-fg" aria-label={certification.issuer}>{issuerIcon[certification.issuer]}</span>
+		<h2 class="text-fg">{certification.title}</h2>
+		<span class="inline-flex text-xl text-accent-fg" aria-label={certification.issuer}>
+			<Icon icon={issuerIcon[certification.issuer]} aria-hidden="true" />
+		</span>
 	</div>
 	<p class="text-dim-fg">
 		<span>{certification.description}</span>

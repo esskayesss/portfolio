@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
+	import Icon from '@iconify/svelte';
 </script>
 
 <div
@@ -19,8 +20,12 @@
 		</div>
 	</div>
 
-	<div class="flex max-w-sm flex-col gap-1 text-sm text-subtext">
-		<span class="text-xs uppercase tracking-wide text-accent-fg">UPI</span>
-		<p>Use the UPI ID above in your payment app. QR generation is not implemented here.</p>
-	</div>
+	<button
+		type="button"
+		class="inline-flex w-fit items-center gap-2 text-xs text-accent-fg hover:text-fg"
+		aria-label="Generate UPI QR"
+	>
+		<Icon icon="ph:qr-code" class="text-xl" aria-hidden="true" />
+		<span class="whitespace-nowrap">Generate QR</span>
+	</button>
 </div>

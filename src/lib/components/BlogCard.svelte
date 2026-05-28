@@ -15,7 +15,7 @@
 	{#if post.cover_image}
 		<img
 			class="w-full object-contain mix-blend-lighten"
-			src={post.cover_url ?? `/blog/${post.slug}/cover.webp`}
+			src={post.cover_url ?? `/static/blog/${post.slug}/cover.webp`}
 			alt=""
 			loading="lazy"
 		/>
@@ -27,9 +27,9 @@
 		{/if}
 	</div>
 	<div class="flex flex-col gap-1">
-		<a class="text-lg text-accent-fg no-underline hover:underline" href={postHref}>
+		<a class="font-proto text-lg text-accent-fg no-underline hover:underline" href={postHref}>
 			{post.title}
-			{#if post.published === false}
+			{#if !post.published}
 				<span class="ml-2 bg-fg px-2 text-sm text-bg">Draft</span>
 			{/if}
 		</a>

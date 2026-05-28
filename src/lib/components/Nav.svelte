@@ -25,10 +25,10 @@
 	};
 
 	$effect(() => {
-		document.body.style.overflow = isOpen ? 'hidden' : '';
+		document.documentElement.classList.toggle('scroll-locked', isOpen);
 
 		return () => {
-			document.body.style.overflow = '';
+			document.documentElement.classList.remove('scroll-locked');
 		};
 	});
 </script>

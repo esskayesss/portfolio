@@ -20,7 +20,9 @@
 	let shouldMarquee = $state(false);
 	let rectangleIndices = $derived(Array.from(Array(rectangleCount).keys()));
 	let filledRectangles = $derived(
-		Math.floor((podcastPlayer.elapsed / podcastPlayer.total) * rectangleCount),
+		podcastPlayer.total > 0
+			? Math.floor((podcastPlayer.elapsed / podcastPlayer.total) * rectangleCount)
+			: 0,
 	);
 
 	function toClock(time: number) {
@@ -81,16 +83,16 @@
 				onclick={closePodcast}
 				aria-label="Close podcast player"
 			>
-				close x
+				CLOSE X
 			</button>
 
 			<div class="flex w-full justify-between gap-2" bind:this={progressElement} role="group" aria-label="Playback progress">
 				{#each rectangleIndices as index (index)}
 					<button
 						type="button"
-						class:bg-green-fg={index <= filledRectangles}
-						class:animate-pulse={index === filledRectangles}
-						class="podcast-progress-block cursor-pointer border border-green-fg bg-transparent p-0 hover:bg-green-bg"
+						class={`podcast-progress-block cursor-pointer border border-green-fg p-0 hover:bg-green-bg ${
+							index <= filledRectangles ? 'bg-green-fg' : 'bg-transparent'
+						} ${index === filledRectangles ? 'animate-pulse' : ''}`}
 						aria-label={`Seek to ${toClock((index / rectangleCount) * podcastPlayer.total)}`}
 						onclick={() => seekTo(index)}
 					></button>
@@ -105,7 +107,7 @@
 						onclick={togglePodcastPlayback}
 						aria-label={podcastPlayer.isPlaying ? 'Pause podcast' : 'Play podcast'}
 					>
-						<span>{podcastPlayer.isPlaying ? 'pause' : 'play'}</span>
+						<span>{podcastPlayer.isPlaying ? 'PAUSE' : 'PLAY'}</span>
 						{#if podcastPlayer.isPlaying}
 							<svg class="size-5" viewBox="0 0 24 24" aria-hidden="true">
 								<path fill="currentColor" d="M7 5h4v14H7zm6 0h4v14h-4z" />

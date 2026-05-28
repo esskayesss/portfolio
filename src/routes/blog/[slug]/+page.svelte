@@ -43,10 +43,10 @@
 	<link rel="canonical" href={canonicalUrl(`/blog/${data.post.slug}`)} />
 </svelte:head>
 
-<article class="flex flex-col gap-6">
+<article class="flex flex-col gap-12 pb-24">
 	<BlogPostHeader post={data.post} />
 	<BlogPodcastAction slug={data.post.slug} title={data.post.title} />
-	<div class="blog-prose prose border border-ghost bg-accent-bg p-6">
+	<div class="blog-prose prose">
 		<Content />
 	</div>
 </article>

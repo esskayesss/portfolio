@@ -223,6 +223,45 @@
 
 html {
   @apply min-h-dvh bg-bg;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ghost) transparent;
+}
+
+html.scroll-locked {
+  overflow: hidden;
+}
+
+html::-webkit-scrollbar,
+.scrollbar-thin::-webkit-scrollbar,
+.toc::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-track,
+.scrollbar-thin::-webkit-scrollbar-track,
+.toc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+.scrollbar-thin::-webkit-scrollbar-thumb,
+.toc::-webkit-scrollbar-thumb {
+  background: var(--color-ghost);
+  border-radius: 0;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+.scrollbar-thin::-webkit-scrollbar-thumb:hover,
+.toc::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dim-fg);
+}
+
+.toc {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ghost) transparent;
 }
 
 body {
@@ -231,7 +270,6 @@ body {
   @apply m-0 flex min-h-dvh flex-col bg-bg px-8 pb-8 text-base text-fg antialiased;
 }
 
-body,
 button,
 input,
 select,
@@ -244,16 +282,17 @@ a {
   @apply transition-colors duration-300 ease-in-out;
 }
 
+button:not(:disabled),
+[role='button']:not(:disabled) {
+  cursor: pointer;
+}
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
   @apply outline-2 outline-offset-2 outline-cyan-fg;
-}
-
-a {
-  @apply text-cyan-fg underline-offset-2 hover:text-accent-fg hover:underline;
 }
 
 img {
@@ -268,24 +307,8 @@ section {
   @apply flex flex-col gap-2.5;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  @apply m-0 font-headings leading-tight text-accent-fg;
-}
-
 h1 {
-  @apply text-xl capitalize;
-}
-
-h2 {
-  @apply text-lg;
-}
-
-h3,
-h4 {
-  @apply text-base;
+  @apply m-0 font-headings text-xl leading-tight capitalize text-accent-fg;
 }
 
 p {
@@ -354,7 +377,7 @@ tr {
 }
 
 td {
-  @apply border-x border-ghost px-4 py-2 text-subtext;
+  @apply border-x border-ghost px-2 py-1 text-subtext;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -368,7 +391,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .heading a {
-  @apply bg-blue-bg text-base text-accent-fg no-underline hover:underline;
+  @apply bg-blue-bg font-proto text-base text-accent-fg no-underline hover:underline;
 }
 
 .content {
@@ -379,8 +402,14 @@ input[type='number']::-webkit-outer-spin-button {
   @apply flow-root;
 }
 
-.content a {
-  @apply text-cyan-fg no-underline hover:underline;
+@layer base {
+  :where(.content) a {
+    @apply text-cyan-fg no-underline underline-offset-2 hover:text-accent-fg hover:underline;
+  }
+
+  :where(.blog-prose) a {
+    @apply text-cyan-fg no-underline underline-offset-2 hover:text-accent-fg hover:underline;
+  }
 }
 
 .prose {
@@ -393,12 +422,38 @@ input[type='number']::-webkit-outer-spin-button {
   @apply pt-2;
 }
 
+.blog-prose figure {
+  @apply my-4 border border-ghost;
+}
+
+.blog-prose figure img {
+  @apply mx-auto w-full;
+}
+
+.blog-prose figcaption {
+  @apply flex items-center justify-center gap-3 py-2 text-xs text-dim-fg;
+}
+
+.blog-prose figcaption span {
+  @apply bg-accent-fg px-1 font-proto uppercase text-bg;
+}
+
+.blog-prose p > img {
+  @apply mx-auto w-full border border-ghost;
+}
+
 .blog-prose ul {
-  @apply my-2 list-disc pl-6 text-subtext;
+  @apply my-2 list-disc pl-0 text-subtext;
 }
 
 .blog-prose ol {
-  @apply my-2 list-decimal pl-6 text-subtext;
+  @apply my-2 list-decimal pl-0 text-subtext;
+}
+
+.blog-prose ul li,
+.blog-prose ol li {
+  @apply pl-0;
+  list-style-position: inside;
 }
 
 .blog-prose li {
@@ -434,7 +489,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .blog-prose .code-block__copy {
-  @apply flex shrink-0 items-center gap-1 text-dim-fg hover:text-accent-fg;
+  @apply flex shrink-0 items-center gap-1 text-xl text-dim-fg hover:text-accent-fg;
 }
 
 .blog-prose .code-block pre {
@@ -442,7 +497,99 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .blog-prose .code-block pre code {
-  @apply block overflow-x-auto p-4 pt-4 text-fg;
+  @apply overflow-x-auto text-fg;
+}
+
+.blog-prose .code-block__table {
+  @apply block overflow-x-auto p-4 text-sm;
+  white-space: normal;
+}
+
+.blog-prose .code-block__line {
+  @apply block whitespace-nowrap;
+}
+
+.blog-prose .code-block__line-number {
+  @apply inline-block w-8 select-none pr-4 text-right text-ghost;
+}
+
+.blog-prose .code-block__line-code {
+  @apply inline;
+}
+
+/* hljs yorumi theme */
+.hljs-comment,
+.hljs-quote {
+  color: #656771;
+}
+
+.hljs-keyword,
+.hljs-doctag,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: #a188c3;
+}
+
+.hljs-addition,
+.hljs-bullet {
+  color: #80aa6e;
+}
+
+.hljs-selector-tag,
+.hljs-section {
+  color: #da72a2;
+}
+
+.hljs-literal,
+.hljs-attr,
+.hljs-attribute,
+.hljs-formula {
+  color: #d29146;
+}
+
+.hljs-meta,
+.hljs-class,
+.hljs-type,
+.hljs-link {
+  color: #7aa8a7;
+}
+
+.hljs-meta-string,
+.hljs-string {
+  color: #9cb67d;
+}
+
+.hljs-number,
+.hljs-title,
+.hljs-symbol {
+  color: #b4647f;
+}
+
+.hljs-regexp,
+.hljs-built_in,
+.hljs-deletion {
+  color: #f05c60;
+}
+
+.hljs-name {
+  color: #ba9a5e;
+}
+
+.hljs-template-variable,
+.hljs-subst {
+  color: #a7a9b5;
+}
+
+.hljs-variable {
+  color: #bdbfcb;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }
 
 .blog-prose img {
@@ -451,6 +598,14 @@ input[type='number']::-webkit-outer-spin-button {
 
 .blog-prose hr {
   @apply border-ghost;
+}
+
+.youtube-embed {
+  @apply my-4 overflow-hidden border border-ghost bg-bg;
+}
+
+.youtube-embed iframe {
+  @apply block aspect-video w-full;
 }
 
 .center-row {

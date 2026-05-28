@@ -5,11 +5,10 @@
 
 <nav class="flex place-content-around border border-ghost p-4 text-2xl" aria-label="Social links">
 	{#each socials as social (social.href)}
-		<a
-			class={`text-fg no-underline ${social.hoverClass} hover:no-underline`}
+		<a class={`text-fg no-underline ${social.hoverClass} hover:no-underline`}
 			href={social.href}
-			target="_blank"
-			rel="external noreferrer"
+			target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+			rel="external noopener noreferrer"
 			aria-label={social.label}
 			title={social.label}
 		>

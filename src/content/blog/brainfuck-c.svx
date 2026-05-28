@@ -9,6 +9,7 @@ published: false
 
 <script lang="ts">
 	import CodeBlock from '$lib/components/CodeBlock.svelte';
+	import YoutubeEmbed from '$lib/components/YoutubeEmbed.svelte';
 
 	const advancedDashCode = `from dash.dependencies import Input, Output
 
@@ -39,7 +40,7 @@ setInterval(() => {
 
 Brainfuck is one of the most famous esoteric languages. It was developed by Urban Muller in an attempt to make a language for which he could write the smallest possible compiler for the AmigaOS.
 
-Video reference: [06zBsG9C7-g on YouTube](https://www.youtube.com/watch?v=06zBsG9C7-g)
+<YoutubeEmbed id="06zBsG9C7-g" title="Brainfuck video reference" />
 
 # Building Real-time Chat with WebSockets
 
@@ -48,13 +49,19 @@ Video reference: [06zBsG9C7-g on YouTube](https://www.youtube.com/watch?v=06zBsG
 
 The rise of real-time applications has transformed how we think about web communication. While HTTP excels at request-response patterns, WebSockets open up a world of persistent, bidirectional connections.
 
-> Diagram placeholder: WebSocket vs HTTP protocol comparison. Source image asset was not present during migration.
+<figure>
+	<img src="/static/blog/realtime-chat-app/protocol-comparison.webp" alt="WebSocket vs HTTP Protocol Comparison" />
+	<figcaption><span>Caption:</span> WebSocket vs HTTP Protocol Comparison</figcaption>
+</figure>
 
 Let's build a basic chat server that handles thousands of concurrent connections. First, set up your WebSocket server:
 
 <CodeBlock code={advancedDashCode} lang="python" filename="advanced-dash.py" />
 
-> Diagram placeholder: real-time message flow. Source image asset was not present during migration.
+<figure>
+	<img src="/static/blog/realtime-chat-app/message-flow.webp" alt="Real-time Message Flow Diagram" />
+	<figcaption><span>Caption:</span> Real-time Message Flow Diagram</figcaption>
+</figure>
 
 But the real magic happens when we start handling scale. Here's how our chat system performs under load:
 
