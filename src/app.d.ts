@@ -28,6 +28,11 @@ declare module "*?enhanced" {
 	export default value;
 }
 
+declare module "virtual:blog-raw" {
+	const value: Record<string, string>;
+	export default value;
+}
+
 declare global {
 	namespace App {
 		// interface Error {}

@@ -1,17 +1,10 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import rawBlogSources from "virtual:blog-raw";
 import type { BlogMetadata, RawBlogMetadata } from "./types";
 
 type FrontmatterValue = string | boolean | Array<string>;
 type ParsedFrontmatter = Record<string, FrontmatterValue>;
 
-const rawPaths = Object.keys(
-	import.meta.glob("/src/content/blog/**/*.{svx,md}"),
-);
-const projectRoot = process.cwd();
-const rawModules: Record<string, string> = Object.fromEntries(
-	rawPaths.map((path) => [path, readFileSync(join(projectRoot, path), "utf8")]),
-);
+const rawModules: Record<string, string> = rawBlogSources;
 const coverModules = import.meta.glob<string>("/static/blog/**/cover.webp", {
 	eager: true,
 	query: "?url",

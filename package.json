@@ -13,6 +13,7 @@
 		"@types/node": "^24",
 		"eslint": "^10.2.0",
 		"eslint-plugin-svelte": "^3.17.0",
+		"fast-glob": "^3.3.3",
 		"globals": "^17.4.0",
 		"mdsvex": "^0.12.7",
 		"svelte": "^5.55.2",
