@@ -2,6 +2,18 @@ import type { CertificationMetadata } from "./types";
 
 export const certifications: Array<CertificationMetadata> = [
 	{
+		title: "Winner · Kavach Hackathon, 2023",
+		issuer: "Contest",
+		description:
+			"Kavach is a cybersecurity hackathon organized by the Innovation Cell of the Ministry of Education, AICTE, in collaboration with the wings of the Ministry of Home Affairs - BPR&D and I4C.",
+	},
+	{
+		title: "Winner · Smart India Hackathon, 2023",
+		issuer: "Contest",
+		description:
+			"SIH is a national hackathon organized by AICTE, Innovation Cell of the Ministry of Education.",
+	},
+	{
 		title: "C Programming with Linux",
 		issuer: "Coursera",
 		description:
@@ -16,17 +28,5 @@ export const certifications: Array<CertificationMetadata> = [
 			label: "deeplearning.ai",
 		},
 		suffix: ".",
-	},
-	{
-		title: "Winner · Kavach Hackathon, 2023",
-		issuer: "Contest",
-		description:
-			"Kavach is a cybersecurity hackathon organized by the Innovation Cell of the Ministry of Education, AICTE, in collaboration with the wings of the Ministry of Home Affairs - BPR&D and I4C.",
-	},
-	{
-		title: "Winner · Smart India Hackathon, 2023",
-		issuer: "Contest",
-		description:
-			"SIH is a national hackathon organized by AICTE, Innovation Cell of the Ministry of Education.",
 	},
 ];

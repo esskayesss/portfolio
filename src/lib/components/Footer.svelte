@@ -3,7 +3,7 @@
 	import Icon from '@iconify/svelte';
 </script>
 
-<footer class="flex flex-col gap-2 text-sm text-dim-fg print:hidden">
+<footer class="flex flex-col gap-2 text-sm text-dim-fg print:hidden py-5">
 	<div class="mx-auto mt-8 flex w-full max-w-6xl justify-center text-xs text-dim-fg lg:justify-between">
 		<a
 			class="hidden items-center gap-2 text-dim-fg no-underline hover:text-accent-fg hover:underline lg:flex"
@@ -16,7 +16,10 @@
 		</a>
 		<span class="flex items-center gap-3">
 			character permutations, assembled in
-			<img class="h-4 w-auto opacity-80" src={asset('/india.webp')} alt="gm sars." width="18" height="16" />
+      <span class="pl-1 flex items-center gap-2">
+        <img class="w-auto size-8" src={asset('/india.webp')} alt="gm sars."/>
+        भारत
+      </span>
 		</span>
 	</div>
 </footer>

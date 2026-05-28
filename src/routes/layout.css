@@ -164,31 +164,31 @@
 
   --shadow-shell: 0 0.5rem 1.5rem rgb(6 9 20 / 0.88);
 
-  --color-bg: #060914;
-  --color-fg: #bdbfcb;
-  --color-subtext: #a7a9b5;
-  --color-ghost: #343742;
+  --color-bg: var(--color-dark-30);
+  --color-fg: var(--color-light-60);
+  --color-subtext: var(--color-light-20);
+  --color-ghost: var(--color-dark-90);
 
-  --color-dim-fg: #878996;
-  --color-dim-bg: #121520;
+  --color-dim-fg: var(--color-light-20);
+  --color-dim-bg: var(--color-dark-60);
 
-  --color-accent-fg: #c6dfec;
-  --color-accent-bg: #0e121f;
+  --color-accent-fg: var(--color-cyan-100);
+  --color-accent-bg: var(--color-blue-30);
 
-  --color-yellow-fg: #e1c084;
-  --color-yellow-bg: #66431f;
+  --color-yellow-fg: var(--color-yellow-90);
+  --color-yellow-bg: var(--color-yellow-30);
 
-  --color-green-fg: #a9d076;
-  --color-green-bg: #1c4642;
+  --color-green-fg: var(--color-green-90);
+  --color-green-bg: var(--color-green-30);
 
-  --color-blue-fg: #798ddc;
-  --color-blue-bg: #0d2c4e;
+  --color-blue-fg: var(--color-blue-90);
+  --color-blue-bg: var(--color-blue-30);
 
-  --color-magenta-fg: #bb5d7d;
-  --color-magenta-bg: #4c1036;
+  --color-magenta-fg: var(--color-magenta-90);
+  --color-magenta-bg: var(--color-magenta-30);
 
-  --color-cyan-fg: #85e0cb;
-  --color-cyan-bg: #104351;
+  --color-cyan-fg: var(--color-cyan-90);
+  --color-cyan-bg: var(--color-cyan-30);
 }
 
 @media (min-width: 600px) {
@@ -214,7 +214,7 @@
 }
 
 *::selection {
-  @apply bg-ghost text-accent-fg;
+  @apply bg-blue-40 text-fg;
 }
 
 *::-moz-selection {
@@ -267,7 +267,7 @@ html::-webkit-scrollbar-thumb:hover,
 body {
   font-family: 'Geist Mono', monospace;
   font-optical-sizing: auto;
-  @apply m-0 flex min-h-dvh flex-col bg-bg px-8 pb-8 text-base text-fg antialiased;
+  @apply m-0 flex min-h-dvh flex-col bg-bg text-base text-fg antialiased;
 }
 
 button,
@@ -300,7 +300,7 @@ img {
 }
 
 main {
-  @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 py-4;
+  @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-15 py-4;
 }
 
 section {
@@ -395,7 +395,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .content {
-  @apply flex flex-col gap-6;
+  @apply flex flex-col gap-5;
 }
 
 .content p {

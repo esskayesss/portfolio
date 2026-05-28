@@ -12,8 +12,8 @@
 >
 	<div class="flex items-center gap-2 no-underline">
 		<a class="flex items-center gap-2 font-proto text-xl no-underline" href={resolve('/')} aria-label="esskayesss home">
-			<img class="size-[14px] opacity-90" src={asset('/logo.webp')} alt="contour logo" width="14" height="14" />
-			<span class="font-proto text-xl">esskayesss</span>
+			<img class="size-7 opacity-90" src={asset('/logo.webp')} alt="contour logo" width="14" height="14" />
+			<span class="font-proto text-xl leading-none">esskayesss</span>
 		</a>
 		{#if isBlog}
 			<a
