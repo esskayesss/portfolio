@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { asset, resolve } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
+	import logo from '$lib/assets/logo.webp?enhanced';
 	import Icon from '@iconify/svelte';
 	import Nav from './Nav.svelte';
 
@@ -11,8 +12,8 @@
 	class="sticky top-0 left-0 z-10 mx-auto flex w-full max-w-6xl justify-between bg-bg py-4 pt-8 shadow-bg shadow-lg print:static print:mt-8 print:shadow-none"
 >
 	<div class="flex items-center gap-2 no-underline">
-		<a class="flex items-center gap-2 font-proto text-xl no-underline" href={resolve('/')} aria-label="esskayesss home">
-			<img class="size-7 opacity-90" src={asset('/logo.webp')} alt="contour logo" width="14" height="14" />
+		<a class="flex items-center gap-2 font-proto text-xl no-underline" href={resolve('/')}>
+			<enhanced:img class="size-7 opacity-90" src={logo} alt="" aria-hidden="true" />
 			<span class="font-proto text-xl leading-none">esskayesss</span>
 		</a>
 		{#if isBlog}

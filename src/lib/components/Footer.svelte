@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
+	import india from '$lib/assets/india.webp?enhanced';
 	import Icon from '@iconify/svelte';
 </script>
 
@@ -16,10 +16,10 @@
 		</a>
 		<span class="flex items-center gap-3">
 			character permutations, assembled in
-      <span class="pl-1 flex items-center gap-2">
-        <img class="w-auto size-8" src={asset('/india.webp')} alt="gm sars."/>
-        भारत
-      </span>
+			<span class="flex items-center gap-2 pl-1">
+				<enhanced:img class="size-8 w-auto" src={india} alt="gm sars." />
+				भारत
+			</span>
 		</span>
 	</div>
 </footer>

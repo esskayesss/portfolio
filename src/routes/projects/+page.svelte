@@ -1,9 +1,10 @@
 <script lang="ts">
 	import ProjectListEntry from '$lib/components/ProjectListEntry.svelte';
-	import { projects } from '$lib/projects';
 	import { canonicalUrl } from '$lib/site';
+	import type { ProjectMetadata } from '$lib/types';
 
 	const description = 'Projects and experiments by Saurabh Sharma.';
+	let { data }: { data: { projects: Array<ProjectMetadata> } } = $props();
 </script>
 
 <svelte:head>
@@ -21,7 +22,7 @@
 	</div>
 
 	<div class="content">
-		{#each projects as project (project.title)}
+		{#each data.projects as project (project.title)}
 			<div class="border border-ghost p-4">
 				<ProjectListEntry {project} />
 			</div>

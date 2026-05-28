@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { blogPosts } from '$lib/blogs';
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import { canonicalUrl } from '$lib/site';
+	import type { BlogMetadata } from '$lib/types';
 
 	const description = 'Technical notes, projects, and experiments by Saurabh Sharma.';
+	let { data }: { data: { blogPosts: Array<BlogMetadata> } } = $props();
 </script>
 
 <svelte:head>
@@ -26,8 +27,8 @@
 	</div>
 
 	<div class="content">
-		{#if blogPosts.length > 0}
-			{#each blogPosts as post (post.slug)}
+		{#if data.blogPosts.length > 0}
+			{#each data.blogPosts as post (post.slug)}
 				<BlogCard {post} />
 			{/each}
 		{:else}

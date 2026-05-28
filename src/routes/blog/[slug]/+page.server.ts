@@ -1,9 +1,9 @@
 import { error } from "@sveltejs/kit";
-import { getBlogPost } from "$lib/blogs";
+import { getBlogPost } from "$lib/blogs.server";
 
-import type { PageLoad } from "./$types";
+import type { PageServerLoad } from "./$types";
 
-export const load: PageLoad = ({ params }) => {
+export const load: PageServerLoad = ({ params }) => {
 	if (!params.slug) {
 		error(404, "Post not found");
 	}

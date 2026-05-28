@@ -1,12 +1,23 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { searchBlogPosts } from '$lib/blogs';
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import { canonicalUrl } from '$lib/site';
+	import type { BlogMetadata } from '$lib/types';
 
 	const description = 'Search blog posts by title, description, type, or tag.';
+	let { data }: { data: { blogPosts: Array<BlogMetadata> } } = $props();
 	let query = $state('');
-	let results = $derived(searchBlogPosts(query));
+	let results = $derived.by(() => {
+		const normalizedQuery = query.trim().toLowerCase();
+		if (!normalizedQuery) return data.blogPosts;
+
+		return data.blogPosts.filter((post) => {
+			const searchable = [post.title, post.description, post.type, ...post.tags]
+				.join(' ')
+				.toLowerCase();
+			return searchable.includes(normalizedQuery);
+		});
+	});
 </script>
 
 <svelte:head>

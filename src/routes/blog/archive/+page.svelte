@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { blogPosts } from '$lib/blogs';
 	import { canonicalUrl } from '$lib/site';
+	import type { BlogMetadata } from '$lib/types';
 
 	const description = 'Date-sorted archive of all blog posts.';
+	let { data }: { data: { blogPosts: Array<BlogMetadata> } } = $props();
 </script>
 
 <svelte:head>
@@ -22,9 +23,9 @@
 	</div>
 
 	<div class="content">
-		{#if blogPosts.length > 0}
+		{#if data.blogPosts.length > 0}
 			<ul class="flex flex-col gap-3">
-				{#each blogPosts as post (post.slug)}
+				{#each data.blogPosts as post (post.slug)}
 					<li class="flex flex-col gap-1 border-b border-ghost pb-3 sm:flex-row sm:items-baseline sm:gap-4">
 						<time class="text-xs text-dim-fg" datetime={post.sort_date}>{post.date}</time>
 						<a class="text-accent-fg no-underline hover:underline" href={resolve('/blog/[slug]', { slug: post.slug })}>{post.title}</a>

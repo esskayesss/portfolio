@@ -23,7 +23,8 @@
 				<Tag href={project.website} title={websiteHost} icon="web" color="magenta" />
 			{/if}
 			{#if project.github && githubUrl}
-				<Tag href={githubUrl} title={project.website ? 'source' : project.github} icon="github" color="dim" ariaLabel={`${project.title} source on GitHub`} />
+				{@const githubTitle = project.website ? 'source' : project.github}
+				<Tag href={githubUrl} title={githubTitle} icon="github" color="dim" ariaLabel={`${githubTitle} on GitHub`} />
 			{/if}
 		</div>
 	</div>

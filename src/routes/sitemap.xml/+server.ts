@@ -1,4 +1,4 @@
-import { blogPosts } from "$lib/blogs";
+import { blogPosts } from "$lib/blogs.server";
 import { canonicalUrl } from "$lib/site";
 
 import type { RequestHandler } from "@sveltejs/kit";

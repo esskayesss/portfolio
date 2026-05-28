@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
+	import headshot from '$lib/assets/headshot.webp?enhanced';
 	import Icon from '@iconify/svelte';
 </script>
 
@@ -7,13 +7,7 @@
 	class="flex flex-col gap-6 border border-green-50 bg-green-10 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8"
 >
 	<div class="flex items-center gap-2 sm:gap-4">
-		<img
-			class="size-12 rounded-full"
-			src={asset('/headshot.webp')}
-			alt="Saurabh Sharma"
-			width="48"
-			height="48"
-		/>
+		<enhanced:img class="size-12 rounded-full" src={headshot} alt="Saurabh Sharma" />
 		<div class="flex flex-col items-start">
 			<span class="text-xs text-subtext">saurabh sharma.</span>
 			<span class="text-green-100">esskayesss@ybl</span>

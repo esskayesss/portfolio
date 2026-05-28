@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
+	import supportBanner from '$lib/assets/support.webp?enhanced';
 	import SupportUpiCard from '$lib/components/SupportUpiCard.svelte';
 	import SupportLinks from '$lib/components/SupportLinks.svelte';
 	import { canonicalUrl } from '$lib/site';
@@ -39,13 +39,7 @@
 
 	<div class="flex flex-col gap-4 border border-ghost">
 		<div class="aspect-support-banner overflow-hidden bg-dim-bg">
-			<img
-				class="h-full w-full object-cover"
-				src={asset('/support.webp')}
-				alt="Support esskayesss"
-				width="1200"
-				height="240"
-			/>
+			<enhanced:img class="h-full w-full object-cover" src={supportBanner} alt="Support esskayesss" sizes="min(72rem, 100vw)" />
 		</div>
 	</div>
   <SupportLinks />

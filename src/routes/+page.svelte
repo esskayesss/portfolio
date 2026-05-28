@@ -1,14 +1,20 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { latestBlogPosts } from '$lib/blogs';
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import CertListEntry from '$lib/components/CertListEntry.svelte';
 	import ExperienceSection from '$lib/components/ExperienceSection.svelte';
 	import ProjectListEntry from '$lib/components/ProjectListEntry.svelte';
 	import SocialBar from '$lib/components/SocialBar.svelte';
-	import { certifications } from '$lib/certifications';
-	import { projects } from '$lib/projects';
 	import { canonicalUrl, siteDescription, siteName } from '$lib/site';
+	import type { BlogMetadata, CertificationMetadata, ProjectMetadata } from '$lib/types';
+
+	type HomeData = {
+		latestBlogPosts: Array<BlogMetadata>;
+		certifications: Array<CertificationMetadata>;
+		projects: Array<ProjectMetadata>;
+	};
+
+	let { data }: { data: HomeData } = $props();
 </script>
 
 <svelte:head>
@@ -38,7 +44,7 @@
 		<a href={resolve('/projects')}>See All</a>
 	</div>
 	<div class="content">
-		{#each projects.slice(0, 3) as project (project.title)}
+		{#each data.projects.slice(0, 3) as project (project.title)}
 			<ProjectListEntry {project} />
 		{/each}
 	</div>
@@ -55,8 +61,8 @@
 		<a href={resolve('/blog')}>See All</a>
 	</div>
 	<div class="content">
-		{#if latestBlogPosts.length > 0}
-			{#each latestBlogPosts as post (post.slug)}
+		{#if data.latestBlogPosts.length > 0}
+			{#each data.latestBlogPosts as post (post.slug)}
 				<BlogCard {post} />
 			{/each}
 		{:else}
@@ -70,7 +76,7 @@
 		<h1>certifications and achievements</h1>
 	</div>
 	<div class="content">
-		{#each certifications as certification (certification.title)}
+		{#each data.certifications as certification (certification.title)}
 			<CertListEntry {certification} />
 		{/each}
 	</div>

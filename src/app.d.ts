@@ -1,3 +1,5 @@
+/// <reference types="@sveltejs/enhanced-img" />
+
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 
@@ -17,6 +19,13 @@ declare module "*.md" {
 	export const metadata: RawBlogMetadata;
 	const component: Component;
 	export default component;
+}
+
+declare module "*?enhanced" {
+	import type { Picture } from "vite-imagetools";
+
+	const value: Picture;
+	export default value;
 }
 
 declare global {
