@@ -2,12 +2,12 @@ import type { ProjectMetadata } from "./types";
 
 export const projects: Array<ProjectMetadata> = [
 	{
-		title: "whatcook?",
+		title: "yorumi",
 		description:
-			"whatCook is your personal AI-Powered kitchen assistant designed to make meal planning effortless. The app helps you discver recipes based on the ingredients you already have at home— all you need to do, is snap a picture of your groceries and let WhatCook work its magic.",
+			"calming deep sea colorscheme for developers with 200 stars on github.",
 		blog: undefined,
-		website: "https://whatcook.esskayesss.dev",
-		github: "esskayesss/whatcook",
+		website: "https://yorumicolors.cc",
+		github: "yorumicolors/yorumi.nvim",
 	},
 	{
 		title: "clishae",
@@ -26,23 +26,11 @@ export const projects: Array<ProjectMetadata> = [
 		github: "esskayesss/b64ed",
 	},
 	{
-		title: "yorumi",
+		title: "whatcook?",
 		description:
-			"calming deep sea colorscheme for developers with 125 stars on github.",
+			"whatCook is your personal AI-Powered kitchen assistant designed to make meal planning effortless. The app helps you discver recipes based on the ingredients you already have at home— all you need to do, is snap a picture of your groceries and let WhatCook work its magic.",
 		blog: undefined,
-		website: "https://yorumicolors.cc",
-		github: "yorumicolors/yorumi.nvim",
+		website: "https://whatcook.esskayesss.dev",
+		github: "esskayesss/whatcook",
 	},
 ];
-
-const featuredProjectTitles: Array<string> = [
-	"whatcook?",
-	"brainf*ck interpreter in c",
-	"clishae",
-	"b64ed",
-	"helmdall",
-];
-
-export const featuredProjects: Array<ProjectMetadata> = projects.filter(
-	(entry) => featuredProjectTitles.includes(entry.title),
-);

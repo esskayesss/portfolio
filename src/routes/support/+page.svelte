@@ -25,7 +25,6 @@
 			If my writing, open-source work, or projects helped you, you can support future work through
 			GitHub Sponsors or X subscriptions.
 		</p>
-		<SupportLinks />
 	</div>
 </section>
 
@@ -38,7 +37,7 @@
 		<h1>Other ways to support me</h1>
 	</div>
 
-	<div class="flex flex-col gap-4 border border-ghost bg-accent-bg p-4">
+	<div class="flex flex-col gap-4 border border-ghost">
 		<div class="aspect-support-banner overflow-hidden bg-dim-bg">
 			<img
 				class="h-full w-full object-cover"
@@ -48,7 +47,6 @@
 				height="240"
 			/>
 		</div>
-
-		<SupportLinks />
 	</div>
+  <SupportLinks />
 </section>

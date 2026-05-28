@@ -7,7 +7,7 @@
 	import ProjectListEntry from '$lib/components/ProjectListEntry.svelte';
 	import SocialBar from '$lib/components/SocialBar.svelte';
 	import { certifications } from '$lib/certifications';
-	import { featuredProjects } from '$lib/projects';
+	import { projects } from '$lib/projects';
 	import { canonicalUrl, siteDescription, siteName } from '$lib/site';
 </script>
 
@@ -38,7 +38,7 @@
 		<a href={resolve('/projects')}>See All</a>
 	</div>
 	<div class="content">
-		{#each featuredProjects.slice(0, 3) as project (project.title)}
+		{#each projects.slice(0, 3) as project (project.title)}
 			<ProjectListEntry {project} />
 		{/each}
 	</div>

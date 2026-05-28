@@ -27,7 +27,7 @@
 		{/if}
 	</div>
 	<div class="flex flex-col gap-1">
-		<a class="font-proto text-lg text-accent-fg no-underline hover:underline" href={postHref}>
+		<a class="w-fit font-proto text-lg text-accent-fg no-underline transition-colors hover:text-accent-fg" href={postHref}>
 			{post.title}
 			{#if !post.published}
 				<span class="ml-2 bg-fg px-2 text-sm text-bg">Draft</span>

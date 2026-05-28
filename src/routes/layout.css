@@ -158,6 +158,11 @@
   --spacing-podcast-progress-height: 2rem;
   --spacing-podcast-title-gap: 4.8rem;
 
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-duration: 220ms;
+  --motion-stagger: 80ms;
+  --animate-motion-fade-up: motion-fade-up var(--motion-duration) var(--motion-ease) both;
+  --animate-motion-pop: motion-pop var(--motion-duration) var(--motion-ease) both;
   --animate-podcast-marquee: podcast-marquee 12s linear infinite;
 
   --aspect-support-banner: 5 / 1;
@@ -277,9 +282,10 @@ textarea {
   font-family: inherit;
 }
 
-button,
-a {
-  @apply transition-colors duration-300 ease-in-out;
+:where(a, button, [role='button']) {
+  transition-property: color, background-color, border-color, opacity, box-shadow;
+  transition-duration: var(--motion-duration);
+  transition-timing-function: var(--motion-ease);
 }
 
 button:not(:disabled),
@@ -301,6 +307,39 @@ img {
 
 main {
   @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-15 py-4;
+}
+
+.site-shell > header,
+.site-shell > footer {
+  animation: motion-fade var(--motion-duration) var(--motion-ease) both;
+}
+
+.site-shell > main {
+  animation: var(--animate-motion-fade-up);
+}
+
+main > * {
+  animation: var(--animate-motion-fade-up);
+  animation-delay: var(--motion-stagger);
+}
+
+main > *:first-child {
+  animation-delay: 0ms;
+}
+
+main > *:active,
+main > *:focus-within {
+  animation-delay: 0ms;
+}
+
+.motion-backdrop {
+  animation: motion-fade var(--motion-duration) var(--motion-ease) both;
+}
+
+.motion-panel {
+  animation: var(--animate-motion-pop);
+  transform-origin: top right;
+  will-change: transform, opacity;
 }
 
 section {
@@ -637,6 +676,40 @@ input[type='number']::-webkit-outer-spin-button {
   left: calc(100% + var(--spacing-podcast-title-gap));
 }
 
+@keyframes motion-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes motion-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.8rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motion-pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes podcast-marquee {
   from {
     transform: translateX(0);
@@ -644,6 +717,21 @@ input[type='number']::-webkit-outer-spin-button {
 
   to {
     transform: translateX(calc(-100% - var(--spacing-podcast-title-gap)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  :where(a, button, [role='button']) {
+    transform: none !important;
   }
 }
 

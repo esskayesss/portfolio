@@ -19,7 +19,7 @@
 	<link rel="icon" href={asset('/favicon.ico')} sizes="any" />
 </svelte:head>
 
-<div class="flex min-h-dvh flex-col">
+<div class="site-shell flex min-h-dvh flex-col">
 	<Header />
 	<main>
 		{@render children()}

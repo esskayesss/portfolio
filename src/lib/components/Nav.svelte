@@ -36,7 +36,7 @@
 <div class="relative print:hidden">
 	<button
 		type="button"
-		class="relative z-50 flex text-3xl text-accent-fg hover:text-fg"
+		class="relative z-50 flex text-3xl hover:text-fg"
 		aria-label={isOpen ? 'Close menu' : 'Open menu'}
 		aria-expanded={isOpen}
 		onclick={toggleMenu}
@@ -47,11 +47,11 @@
 	{#if isOpen}
 		<button
 			type="button"
-			class="fixed top-0 left-0 z-40 h-screen w-screen cursor-default bg-transparent backdrop-blur-sm"
+			class="motion-backdrop fixed top-0 left-0 z-40 h-screen w-screen cursor-default bg-transparent backdrop-blur-sm"
 			aria-label="Close menu backdrop"
 			onclick={closeMenu}
 		></button>
-		<div class="absolute top-full right-0 z-50 my-4 border-2 border-accent-fg bg-bg px-8 py-10 shadow-shell">
+		<div class="motion-panel absolute top-full right-0 z-50 my-4 border-2 border-accent-fg bg-bg px-8 py-10 shadow-shell">
 			<nav class="flex min-w-60 flex-col items-end gap-6 font-proto text-xl" aria-label="Primary navigation">
 				{#each links as link (link.href)}
 					<a
