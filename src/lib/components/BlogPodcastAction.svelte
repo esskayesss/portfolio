@@ -14,12 +14,13 @@
 		title: string;
 	};
 
-	const FONT_SIZE_LIMITS = { min: 9, max: 13 };
+	const FONT_SIZE_LIMITS = { min: 13, max: 18 };
+	const LEGACY_FONT_SIZE_MULTIPLIER = 1.4;
 	const fontClasses = ['font-sans', 'font-mono', 'font-proto'] as const;
 	const fontVarMap = {
-		'font-sans': '--font-geist-sans',
-		'font-mono': '--font-geist-mono',
-		'font-proto': '--font-proto-mono'
+		'font-sans': '--font-sans',
+		'font-mono': '--font-mono',
+		'font-proto': '--font-proto'
 	} as const;
 
 	let { slug, title }: Props = $props();
@@ -28,7 +29,7 @@
 	let copied = $state(false);
 	let tocOpen = $state(false);
 	let formatOpen = $state(false);
-	let rootFontSize = $state(10);
+	let blogFontSize = $state(14);
 	let fontStyle = $state(1);
 	let tocEntries = $state<TocEntry[]>([]);
 
@@ -102,17 +103,23 @@
 		return Math.min(Math.max(size, FONT_SIZE_LIMITS.min), FONT_SIZE_LIMITS.max);
 	}
 
+	function normalizeStoredFontSize(size: number) {
+		if (!Number.isFinite(size)) return blogFontSize;
+		if (size < FONT_SIZE_LIMITS.min) return Math.round(size * LEGACY_FONT_SIZE_MULTIPLIER);
+		return size;
+	}
+
 	function setFontSize(size: number) {
-		rootFontSize = clampFontSize(size);
-		document.documentElement.style.setProperty('font-size', `${rootFontSize}px`);
-		localStorage.setItem('blog-font-size', rootFontSize.toString());
+		blogFontSize = clampFontSize(size);
+		document.querySelector<HTMLElement>('.blog-prose')?.style.setProperty('font-size', `${blogFontSize}px`);
+		localStorage.setItem('blog-font-size', blogFontSize.toString());
 	}
 
 	function setFontStyle(index: number) {
 		fontStyle = index;
 		const fontClass = fontClasses[index];
-		const fontVar = getComputedStyle(document.body).getPropertyValue(fontVarMap[fontClass]);
-		document.getElementById('blog')?.style.setProperty('font-family', fontVar);
+		const fontVar = fontVarMap[fontClass];
+		document.querySelector<HTMLElement>('.blog-prose')?.style.setProperty('font-family', `var(${fontVar})`);
 		localStorage.setItem('blog-font-style', index.toString());
 	}
 
@@ -138,7 +145,7 @@
 
 	onMount(() => {
 		mounted = true;
-		const storedSize = Number(localStorage.getItem('blog-font-size') ?? rootFontSize);
+		const storedSize = normalizeStoredFontSize(Number(localStorage.getItem('blog-font-size') ?? blogFontSize));
 		const storedStyle = Number(localStorage.getItem('blog-font-style') ?? fontStyle);
 		setFontSize(storedSize);
 		setFontStyle(storedStyle);
@@ -184,9 +191,9 @@
 							<div class="flex items-center gap-4">
 								<span class="flex cursor-pointer gap-2 text-base">Font Size: </span>
 								<span class="flex items-center border border-ghost *:w-fit *:px-4">
-									<Icon class={rootFontSize <= FONT_SIZE_LIMITS.min ? 'disabled' : ''} icon="ph:minus" onclick={() => setFontSize(rootFontSize - 1)} />
-									<span class="border-x border-ghost px-8 text-lg">{rootFontSize}</span>
-									<Icon class={rootFontSize >= FONT_SIZE_LIMITS.max ? 'disabled' : ''} icon="ph:plus" onclick={() => setFontSize(rootFontSize + 1)} />
+									<Icon class={blogFontSize <= FONT_SIZE_LIMITS.min ? 'disabled' : ''} icon="ph:minus" onclick={() => setFontSize(blogFontSize - 1)} />
+									<span class="border-x border-ghost px-8 text-lg">{blogFontSize}</span>
+									<Icon class={blogFontSize >= FONT_SIZE_LIMITS.max ? 'disabled' : ''} icon="ph:plus" onclick={() => setFontSize(blogFontSize + 1)} />
 								</span>
 							</div>
 							<div class="flex items-center gap-4">
@@ -206,7 +213,7 @@
 						</div>
 					</div>
 					{#if formatOpen}
-						<Icon class="text-3xl" icon="io:close-outline" onclick={closeFormat} />
+						<Icon icon="ph:x" onclick={closeFormat} />
 					{:else}
 						<Icon icon="ph:book-open-text" onclick={openFormat} />
 					{/if}
@@ -245,7 +252,7 @@
 						{/each}
 					</div>
 					{#if tocOpen}
-						<Icon class="text-3xl" icon="io:close-outline" onclick={closeToc} />
+						<Icon icon="ph:x" onclick={closeToc} />
 					{:else}
 						<Icon icon="ph:list-bullets" onclick={openToc} />
 					{/if}
