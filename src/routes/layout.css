@@ -308,7 +308,7 @@ img {
 }
 
 main {
-  @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-15 py-4;
+  @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-15 py-4 px-2;
 }
 
 .site-shell > header,
