@@ -9,7 +9,7 @@
 </script>
 
 <header
-	class="sticky top-0 left-0 z-10 mx-auto flex w-full max-w-6xl justify-between bg-bg py-4 pt-8 shadow-bg shadow-lg print:static print:mt-8 print:shadow-none"
+	class="sticky top-0 left-0 z-10 mx-auto flex w-full max-w-6xl justify-between bg-bg py-4 pt-8 shadow-bg shadow-lg print:static print:mt-8 px-2 print:shadow-none"
 >
 	<div class="flex items-center gap-2 no-underline">
 		<a class="flex items-center gap-2 font-proto text-xl no-underline" href={resolve('/')}>
