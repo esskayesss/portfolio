@@ -31,7 +31,7 @@
 
 	const external = $derived(href !== undefined);
 	const classes = $derived(
-		`tag-link group inline-flex w-fit items-center gap-1 px-1 text-sm !text-fg no-underline underline-offset-4 hover:!text-fg hover:underline ${colorClass[color]}`
+		`tag-link group inline-flex w-fit items-center gap-1 whitespace-nowrap px-1 text-sm !text-fg no-underline underline-offset-4 hover:!text-fg hover:underline ${colorClass[color]}`
 	);
 </script>
 
